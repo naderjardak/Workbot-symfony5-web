@@ -1,0 +1,13 @@
+{% extends 'yback.html.twig' %}
+
+{% block title %}Modification Categorie{% endblock %}
+
+{% block body %}
+    <h2>Modifier la categorie:</h2>
+
+    {{ include('categorie/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_categorie_index') }}">back to list</a>
+
+    {{ include('categorie/_delete_form.html.twig') }}
+{% endblock %}

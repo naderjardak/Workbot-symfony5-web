@@ -1,0 +1,33 @@
+{% extends 'yback.html.twig' %}
+{% block title %}Liste catégories{% endblock %}
+{% block body %}
+    <h2>Liste des categories:</h2>
+
+    <table border="1" class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom categorie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.nomcategorie }}</td>
+                <td>
+                    <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}">show</a>
+                    <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_categorie_new') }}">Create new</a>
+{% endblock %}

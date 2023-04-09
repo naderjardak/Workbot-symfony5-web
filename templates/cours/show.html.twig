@@ -1,0 +1,61 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+{% block title %}{{ cour.titre }}{% endblock %}
+
+{% block pagetitle %}
+    <div class="pagetitle">
+        <h1>Cours</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>Accueil</a></li>
+                <li class="breadcrumb-item active">Cours</li>
+                <li class="breadcrumb-item active">Afficher</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+{% endblock%}
+
+
+{% block body %}
+<div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 100px;">
+
+<div class="col-lg-7">
+        <div class="card info-card sales-card">
+
+
+            <div class="card-body">
+                <h5 class="card-title">Cours <span>| {{ cour.titre }}</span></h5>
+
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <img class="pt-1" src="{{asset('assets/img/cours/htmlcours/'~cour.titre~'.png')}}">
+
+                    </div>
+                    <div class="ps-3">
+                        <span class="text-success small pt-1 fw-bold">{{ cour.matiere }}</span> <span class="text-muted small pt-2 ps-1">{{ cour.categorie }}</span>
+                        <br>
+                        <span class="text-success small pt-1 fw-bold">Domaine :</span><span class="text-muted small pt-2 ps-1">{{ cour.domaine }}</span>
+                        <br>
+                        <span class="text-success small pt-1 fw-bold">Chemin :</span><span class="text-muted small pt-2 ps-1">{{ cour.chemin }}</span>
+
+                    </div >
+                    <br>
+                    <div class="ps-3" style="margin-left: 20px">
+                    <form  action="{{ path('app_cours_edit', {'id': cour.id}) }}">
+                    <input type="submit" value="Modifier" class="btn btn-outline-primary">
+                    </form>
+                        <br>
+                        {{ include('cours/_delete_form.html.twig') }}
+                        <br>
+                        <a class="btn btn-outline-dark" href="{{ path('app_cours_index') }}">back to list</a>
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+{#    -------------------------------------     #}
+
+{% endblock %}

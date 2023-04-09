@@ -1,0 +1,109 @@
+{% extends 'ytemplate.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+{% block consulter %} Consulter votre liste et l'état de chaque réclamation.{% endblock %}
+{% block youcef %}
+        <div style="padding: 75px">
+    <h4 class="wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Total des réclamations:{{ reclamation.getTotalItemCount }}</h4>
+    <br><br>
+    <input style="margin-bottom: 10px" type="text" id="search" placeholder="Search">
+    <table border="0" id="t" class="table  table-hover table-secondary table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Reference</th>
+                <th>Titre</th>
+                <th>Dateajout</th>
+                <th>Description</th>
+                <th>Categorie</th>
+                <th>Image</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id="all">
+        {% for reclamation in reclamation %}
+            <tr>
+                <td>{{ reclamation.id }}</td>
+                <td>{{ reclamation.objet }}</td>
+                <td>{{ reclamation.dateajout ? reclamation.dateajout|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.idCategorie.nomcategorie}}</td>
+                <td><img src ="{{ asset('Upload/images/' ~ reclamation.image) }}"
+                         alt="" style="width: 100px;height: 100px"></td>
+
+                <td>{{ reclamation.etat }}</td>
+                <td>
+                    <a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}" class="btn btn-outline-primary">consulter</a>
+                    <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}" class="btn btn-outline-dark">modifier</a>
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">pas de reclamation</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tbody id="searchtab">
+        </tbody>
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#search").keyup(function(e){
+                var value=$(this).val();
+                $.ajax({
+                    url:"{{path('searchReclamationx')}}",
+                    type:'GET',
+                    data:
+                        {
+                            'searchValue':value
+                        },
+                    success:function(retour){
+                        if(retour && value!=""){
+                            $('#t tbody#searchtab').empty();
+                            $.each(JSON.parse(retour),function(i,obj){
+                                $('#t tbody#all').hide();
+                                $('#t tbody#searchtab').append(
+                                    '<tr>' +
+                                    '<td>' + obj.id +'</td>' +
+                                    '<td>'+ obj.objet+'</td>' +
+                                    '<td>'+obj.dateajout+'</td>' +
+                                    '<td>'+ obj.description +'</td>' +
+                                    '<td>'+obj.nomCategorie+'</td>' +
+                                    '<td>'+'<img src ="'+'/Upload/images/'+obj.image+'"alt="" style="width: 100px;height: 100px"></td>' +
+                                    '<td>'+ obj.etat+'</td>' +
+                                    '<td><a href="'+obj.id+'">consulter</a> ' +
+                                    '<a href='+'"'+obj.id+'/edit"'+'>modifier</a>'+'</td>' +
+                                    '</tr>'
+                                );
+                            });
+                        }
+                        else
+                        {
+                            $('#t tbody#searchtab').empty();
+                            $('#t tbody#searchtab').fadeIn('fast');
+                            $('#t tbody#all').show();
+
+                        }
+                    },
+                });
+                return false;
+            });
+
+        });
+    </script>
+    <a href="{{ path('app_reclamation_newRT') }}" class="btn btn-outline-success">nouvelle reclamation</a>
+    <div id="pagination" class="d-flex align-items-center justify-content-center">
+        {{ knp_pagination_render(reclamation) }}
+    </div>
+        </div>
+{% endblock %}
+{% block vide %}
+{% endblock %}
+{% block footertopmiddle %}
+{% endblock %}
+{% block footerright %}
+{% endblock %}
+

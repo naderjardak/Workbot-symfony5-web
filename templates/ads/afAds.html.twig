@@ -1,0 +1,88 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+        {% block body %}
+
+            <div class="row" style="display: flex;align-items: center;justify-content: end ;margin-top: 70px;">
+            {% for f in ads %}
+                <table>
+                <div class="col-lg-9">
+                    <div class="col-12">
+
+
+            <div id="carouselExampleInterval4" class="carousel slide" data-mdb-ride="carousel">
+                <div class="carousel-inner mx-auto w-50 rounded shadow-4">
+                    <div class="carousel-item active">
+                        <div class="card shadow-4 d-block">
+                            <div class="d-flex justify-content-between p-3">
+                                <p class="lead mb-0">{{f.dateFin.format('d/m/Y') }} Combo Offer</p>
+                                <div
+                                        class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                                        style="width: 35px; height: 35px;">
+                                    <p class="text-white mb-0 small">+{{ f.nombreAds }}</p>
+                                </div>
+                            </div>
+                            <img src="{{ asset('Upload/ads/' ~ f.photo) }}"
+                                 class="card-img-top" alt="Laptop" />
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <p class="small"><a href="#!" class="text-muted">Posté par {{ f.nom }}</a></p>
+                                    <p class="small text-danger"><s>Gratuit</s></p>
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Best Offer</h5>
+                                    <a href="{{ path('ads_like',{'id': f.id})}}" class="action-btn js-like">
+                                        {% if app.user and f.isLikedByUser(app.user) %}
+                                         <div class="mm"><i class="fas fa-thumbs-up"></i></div>
+                                        {% else %}
+                                          <div class="mmm"> <i class="far fa-thumbs-up"></i></div>
+                                        {% endif %}
+                                    <h5 class="text-dark mb-0">
+                                    <span class="js_likes">
+                                        {{ f.adsLikes | length() }}
+                                    </span>
+                                    </h5>
+                                    </a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div></div>
+
+                    </div>
+                </div>
+
+            </table>
+            {% endfor %}
+        {% endblock %}
+        {% block javascripts %}
+
+                  <script src="{{ asset('https://unpkg.com/axios/dist/axios.min.js') }} "></script>
+                 <script>
+                         function onClickBtnLike(event){
+                                event.preventDefault();
+                                const url = this.href;
+                                const spanCount= this.querySelector('span.js_likes');
+                                const icone = this.querySelector('i');
+                                axios.get(url).then(function(response) {
+                                   const likes =response.data.likes;
+                                  spanCount.textContent= likes;
+                                  if (icone.classList.contains('fas')){
+                                      icone.classList.replace('fas','far');}
+                                  else{
+                                      icone.classList.replace('far','fas');}
+                                }
+                                ).catch(function (error){
+                                    if(error.response.status===403){
+                                        window.alert(("Il faut connecter"))
+                                    }
+                                });
+                             }
+                              document.querySelectorAll('a.js-like').forEach(function(link){
+                                  link.addEventListener('click',onClickBtnLike);
+                              })
+                 </script>
+        {% endblock %}

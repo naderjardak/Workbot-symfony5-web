@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur index{% endblock %}
+
+{% block body %}
+    <h1>Utilisateur index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Tel</th>
+                <th>Email</th>
+                <th>Mdp</th>
+                <th>Adresse</th>
+                <th>Photo</th>
+                <th>Questionsecu</th>
+                <th>Reponsesecu</th>
+                <th>Methode</th>
+                <th>Formejuridique</th>
+                <th>Raisonsociale</th>
+                <th>Domaine</th>
+                <th>Pattente</th>
+                <th>Nomsociete</th>
+                <th>Diplome</th>
+                <th>Experience</th>
+                <th>Niveaufr</th>
+                <th>Niveauang</th>
+                <th>Competance</th>
+                <th>Cv</th>
+                <th>Portfolio</th>
+                <th>Bio</th>
+                <th>Typecandidat</th>
+                <th>Note</th>
+                <th>Role</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for utilisateur in utilisateurs %}
+            <tr>
+                <td>{{ utilisateur.id }}</td>
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.tel }}</td>
+                <td>{{ utilisateur.email }}</td>
+                <td>{{ utilisateur.password }}</td>
+                <td>{{ utilisateur.adresse }}</td>
+                <td>{{ utilisateur.photo }}</td>
+                <td>{{ utilisateur.questionsecu }}</td>
+                <td>{{ utilisateur.reponsesecu }}</td>
+                <td>{{ utilisateur.methode }}</td>
+                <td>{{ utilisateur.formejuridique }}</td>
+                <td>{{ utilisateur.raisonsociale }}</td>
+                <td>{{ utilisateur.domaine }}</td>
+                <td>{{ utilisateur.pattente }}</td>
+                <td>{{ utilisateur.nomsociete }}</td>
+                <td>{{ utilisateur.diplome }}</td>
+                <td>{{ utilisateur.experience }}</td>
+                <td>{{ utilisateur.niveaufr }}</td>
+                <td>{{ utilisateur.niveauang }}</td>
+                <td>{{ utilisateur.competance }}</td>
+                <td>{{ utilisateur.cv }}</td>
+                <td>{{ utilisateur.portfolio }}</td>
+                <td>{{ utilisateur.bio }}</td>
+                <td>{{ utilisateur.typecandidat }}</td>
+                <td>{{ utilisateur.note }}</td>
+                <td>{{ utilisateur.role }}</td>
+                <td>
+                    <a href="{{ path('app_utilisateur_show', {'id': utilisateur.id}) }}">show</a>
+                    <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="28">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_utilisateur_new') }}">Create new</a>
+{% endblock %}

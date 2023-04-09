@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Captcha{% endblock %}
+
+{% block body %}
+    <h1>Edit Captcha</h1>
+
+    {{ include('captcha/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_captcha_index') }}">back to list</a>
+
+    {{ include('captcha/_delete_form.html.twig') }}
+{% endblock %}

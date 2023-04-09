@@ -1,0 +1,114 @@
+{% extends 'utilisateur/client/base.html.twig' %}
+{% block info %}
+    <br>
+    <br>
+    <br>
+
+    <section class="apply-process section" style="margin-top: 100px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12" style="border-color: #1a2e3b;border-width: 5px">
+                    <div class="process-item">
+                        <img width="70" height="70" src="{{asset('assets/img/cours/cours.png')}}">
+                        <br>
+                        <a href="/cours/u"><h4>Consulter Les Cours</h4></a>
+                        <p>Consulter nos Cours pour acquérir des nouvelles compétences.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="process-item">
+                        <img width="70" height="70" src="{{asset('assets/img/cours/certificate1.png')}}">
+                        <br>
+                        <a href="/certification/u/4"><h4>Passer Un Test De Certification</h4></a>
+                        <p>Passer un test de certifications en ligne qui vont booster votre CV.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="process-item">
+                        <img width="70" height="70" src="{{asset('assets/img/cours/badge.png')}}">
+                        <a href="/badge"><h4>Avoir Un Badge</h4></a>
+                        <p>Obtenir un badge « Compétence vérifiée » pour démontrer la maîtrise de certaines compétences affichées sur votre profil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block body %}
+    <section class="about-us section">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6 col-md-10 col-12">
+                    <div class="content-left wow fadeInLeft" data-wow-delay=".3s" style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
+                        <div calss="row">
+                            <div calss="col-lg-6 col-12">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-6">
+                                        <img class="single-img" src="{{asset('assets/img/small1.jpg')}}" alt="#">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-6">
+                                        <img class="single-img mt-50" src="{{asset('assets/img/small2.jpg')}}" alt="#">
+                                    </div>
+                                </div>
+                            </div>
+                            <div calss="col-lg-6 col-12">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-6">
+                                        <img class="single-img minus-margin" src="{{asset('assets/img/small3.jpg')}}" alt="#">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-6">
+                                        <div class="media-body">
+                                            <h6 class="">Alerte d'emploi!</h6>
+                                            <p class="">{{nb}} Nouveaux emplois sont disponibles cette semaine !</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-10 col-12">
+                    <div class="content-right wow fadeInRight" data-wow-delay=".5s" style="visibility: hidden; animation-delay: 0.5s; animation-name: none;">
+                        <h2>
+                            Vous aider à obtenir le meilleur <br>
+                            emploi qui vous convient
+                        </h2>
+
+
+                        {% set i=1 %}
+                        {% for badge in badges %}
+                                <table>
+                                    <tr>
+                                        <td>
+                                <img style="margin-right: 20px" width="60" height="60" src="{{asset('assets/img/cours/htmlcours/'~badge.nom~'.png')}}">
+                                        </td>
+
+                                    <div class="list-bod" >
+                                        <td>
+                                            <h5>N°{{ i }} :  {{ badge.nom }}</h5>
+
+                                            <br>
+                                            <p>Nous garantissons que vous êtes compétent dans {{ badge.nom }}. </p>
+                                        </td>
+                                    </div>
+
+                                    </tr>
+                                </table>
+                                <hr>
+
+                            {% set i=i+1 %}
+                        {% else %}
+
+                                <td colspan="3">Vous n'avais pas de Badge, <br> Commencez votre première expérience avec notre plateforme,<br> Cela vous aidera à trouver un emploi plus rapide !</td>
+
+                        {% endfor %}
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

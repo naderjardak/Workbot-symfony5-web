@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)https://157781.cc/index.html -->
+<html class="no-js" lang="zxx"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}JobGrids - Job Portal HTML Template.{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="{{asset('yfront/css2.css')}}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{asset('yfront/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('yfront/LineIcons.2.0.css')}}">
+    <link rel="stylesheet" href="{{asset('yfront/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('yfront/tiny-slider.css')}}">
+    <link rel="stylesheet" href="{{asset('yfront/glightbox.min.css')}}">
+    <link rel="stylesheet" href="{{asset('yfront/main.css')}}">
+    <script type="text/javascript" async="" src="{{asset('yfront/ga.js.téléchargé')}}"></script>
+    <script type="text/javascript" src="{{asset('yfront//001.js.téléchargé')}}"></script>
+    <script type="text/javascript" async="" src="{{asset('yfront/taas')}}"></script>
+</head>
+<body>
+<div id="loading-area" style="opacity: 0; display: none;"></div>
+<header class="header">
+    <div class="navbar-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand logo" href="#">
+                            <img class="logo1" src="{{asset('assets/logo.png')}}" alt="Logo">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                            <ul id="nav" class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="active" href="">Home</a>
+                                </li>
+                                <li class="nav-item"><a href="{{path('app_reclamation_index')}}">Reclamation </a></li>
+                                <li class="nav-item"><a href="#">Contact</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="#">Facebook</a></li>
+                                        <li><a href="#">Twitter</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a href="#">About Us</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{{path('contacter_cours')}}">Maps</a></li>
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="button">
+                            <a href="{{ path('app_logout') }}"   class="btn">Déconnecter</a>
+                        </div>
+                    </nav>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+<!--<section class="hero-area section">
+
+    <div class="hero-inner section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 co-12">
+                    <div class="inner-content">
+
+                        <div class="hero-text">
+                                <h1 class="wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Vos reclamations:</h1>
+                                <p class="wow fadeInUp" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                                    Creating a beautiful job website is not easy <br>
+                                    always. To make your life easier, we are<br>
+                                    introducing Jobcamp template.
+                                </p>
+                        </div>
+                        <div class="job-search-wrap-two mt-50 wow fadeInUp" data-wow-delay=".7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+                            <div class="job-search-form">
+                                <form action="https://157781.cc/index.html#">
+                                    <div class="single-field-item keyword">
+                                        <label for="keyword">What</label>
+                                        <input id="keyword" placeholder="What jobs you want?" name="keyword" type="text">
+                                    </div>
+
+                                    <div class="single-field-item location">
+                                        <label for="location">Where</label>
+                                        <input id="location" class="input-field input-field-location" placeholder="Location" name="location" type="text">
+                                    </div>
+
+                                    <div class="submit-btn">
+                                        <button class="btn" type="submit">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="trending-keywords mt-30">
+                                <div class="keywords style-two">
+                                    <span class="title">Popular Keywords:</span>
+                                    <ul>
+                                        <li><a href="https://157781.cc/index.html#">Administrative</a></li>
+                                        <li><a href="https://157781.cc/index.html#">Android</a></li>
+                                        <li><a href="https://157781.cc/index.html#">app</a></li>
+                                        <li><a href="https://157781.cc/index.html#">ASP.NET</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 co-12">
+                    <div class="hero-video-head wow fadeInRight" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
+                        <div class="video-inner">
+                            <img src="{{asset('yfront/hero-image.png')}}" alt="#">
+                            <a href="javascript:;" class="glightbox hero-video"><i class="lni lni-play"></i></a>
+
+                            <div class="promo-video">
+                                <div class="waves-block">
+                                    <div class="waves wave-1"></div>
+                                    <div class="waves wave-2"></div>
+                                    <div class="waves wave-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</section>-->
+<div style="padding-top: 200px">
+<section class="apply-process section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="process-item">
+                    <i class="lni lni-user"></i>
+                    <h4>Bienvenue dans l'espace des reclamations:</h4>
+                    <p>{% block consulter %}Lorem Ipsum is simply dummy text of the printing and typesetting industry.{% endblock %}</p>
+                </div>
+            </div>
+            <!--<div class="col-lg-4 col-md-4 col-12">
+                <div class="process-item">
+                    <i class="lni lni-book"></i>
+                    <h4>Upload Your Resume</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12">
+                <div class="process-item">
+                    <i class="lni lni-briefcase"></i>
+                    <h4>Apply for Dream Job</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</section>
+</div>
+{% block youcef %}
+{% endblock %}
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6 col-12">
+                    <div class="download-text">
+                        <h3>Téléchargez notre meilleure application</h3>
+                        <p>Téléchargez notre application de bureau et profitez d'un usage local sans intermédiaire .</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="download-button">
+                        <div class="button">
+                            <a class="btn" href="https://www.mediafire.com/#" target="_blank"><i class="lni lni-apple"></i> Media File</a>
+                            <a class="btn" href="https://drive.google.com/#" target="_blank"><i class="lni lni-play-store"></i> Google Drive</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+
+                    <div class="f-about single-footer">
+                        <div class="logo">
+                            <a href="firstpage"><img src="{{asset('assets/logo.png')}}" alt="Logo"></a>
+                        </div>
+                        <p>Start building your creative website with our awesome template Massive.</p>
+                        <ul class="contact-address">
+                            <li><span>Address:</span> 555 Wall Street, USA, NY</li>
+                            <li><span>Email:</span> example@apus.com</li>
+                            <li><span>Call:</span> 555-555-1234</li>
+                        </ul>
+                        <div class="footer-social">
+                            <ul>
+                                <li><a href="#"><i class="lni lni-facebook-original"></i></a></li>
+                                <li><a href="#"><i class="lni lni-twitter-original"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-8 col-12">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-12">
+
+                            <div class="single-footer f-link">
+                                <h3>For Candidates</h3>
+                                <ul>
+                                    <li><a href="#">User Dashboard</a></li>
+                                    <li><a href="#">CV Packages</a></li>
+                                    <li><a href="#">Jobs Featured</a></li>
+                                    <li><a href="#">Jobs Urgent</a></li>
+                                    <li><a href="#">Candidate List</a></li>
+                                    <li><a href="#">Candidates Grid</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+
+                            <div class="single-footer f-link">
+                                <h3>For Employers</h3>
+                                <ul>
+                                    <li><a href="#">Post New</a></li>
+                                    <li><a href="#">Employer List</a></li>
+                                    <li><a href="#">Employers Grid</a></li>
+                                    <li><a href="#">Job Packages</a></li>
+                                    <li><a href="#">Jobs Listing</a></li>
+                                    <li><a href="#">Jobs Featured</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+
+                            <div class="single-footer newsletter">
+                                <h3>Join Our Newsletter</h3>
+                                <p>Subscribe to get the latest jobs posted, candidates...</p>
+                                <form action="https://157781.cc/mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                                    <input name="EMAIL" placeholder="Your email address" class="common-input" onfocus="this.placeholder = &#39;&#39;" onblur="this.placeholder =&#39;Your email address&#39;" required="" type="email">
+                                    <div class="button">
+                                        <button class="btn">Envoyer ! <span class="dir-part"></span></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="left">
+                            <p>Droits d'auteur © 2022.JOB.TN .Tous les droits sont réservés</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="right">
+                            <ul>
+                                <li><a href="#">Conditions d'utilisation</a></li>
+                                <li><a href="#">Politique de confidentialité</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<style>
+    .you {
+        animation: twinkle1 0.6s infinite alternate;
+
+        -moz-animation: twinkle1 0.6s infinite alternate;
+
+        -ms-animation: twinkle1 0.6s infinite alternate;
+
+        -webkit-animation: twinkle1 0.6s infinite alternate;
+    }
+
+    @keyframes twinkle1 {
+        0% {
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+        }
+
+        100% {
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+        }
+    }
+</style>
+
+<a href="https://157781.cc/index.html#" class="scroll-top btn-hover" style="display: none;">
+    <i class="lni lni-chevron-up"></i>
+</a>
+<script src="{{asset('yfront/bootstrap.min.js.téléchargé')}}"></script>
+<script src="{{asset('yfront/wow.min.js.téléchargé')}}"></script>
+<script src="{{asset('yfront/tiny-slider.js.téléchargé')}}"></script>
+<script src="{{asset('yfront/glightbox.min.js.téléchargé')}}"></script>
+<script src="{{asset('yfront/main.js.téléchargé')}}"></script>
+<script type="text/javascript">
+    //====== Clients Logo Slider
+    tns({
+        container: '.client-logo-carousel',
+        slideBy: 'page',
+        autoplay: true,
+        autoplayButtonOutput: false,
+        mouseDrag: true,
+        gutter: 15,
+        nav: false,
+        controls: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            540: {
+                items: 2
+            },
+            768: {
+                items: 3
+            },
+            992: {
+                items: 4
+            },
+            1170: {
+                items: 6
+            }
+        }
+    })
+    //========= testimonial
+    tns({
+        container: '.testimonial-slider',
+        items: 1,
+        slideBy: 'page',
+        autoplay: false,
+        mouseDrag: true,
+        gutter: 0,
+        nav: false,
+        controls: true,
+        controlsText: ['<i class="lni lni-arrow-left"></i>', '<i class="lni lni-arrow-right"></i>'],
+        responsive: {
+            0: {
+                items: 1
+            },
+            540: {
+                items: 1
+            },
+            768: {
+                items: 1
+            },
+            992: {
+                items: 1
+            },
+            1170: {
+                items: 1
+            }
+        }
+    })
+
+    //========= glightbox
+    GLightbox({
+        href: '#',
+        type: 'video',
+        source: 'youtube', //vimeo, youtube or local
+        width: 900,
+        autoplayVideos: true
+    })
+</script>
+<script src="{{asset('yfront/vue.min.js.téléchargé')}}"></script>
+<script src="{{asset('yfront/axios.min.js.téléchargé')}}"></script>
+<script>
+    var example1 = new Vue({
+        el: '#app',
+        data: {
+            whatsapp: [111, 222, 333], // 此处自定义
+            jump: '',
+            isapp: true
+        },
+        created() {
+            const navigator = window.navigator
+            let isurl = 'https://jdob.bgt316.com/top-app-backstage/backstage/agent/clientAccount'
+            let headers = {
+                'header-system-type': '12',
+                'header-x-platform-id': '1', //平台id
+                'header-lang': 'en',
+                'header-separate-package-id': '1',
+                'header-apn': 'wifi',
+                'header-userAgent': navigator.userAgent || '', //	手机型号,
+                'header-deviceId': '1',
+                'header-osVersion': '1',
+                'header-os': 'H5',
+                'header-version': '1',
+                ts: new Date().getTime()
+            }
+            let value = {
+                agentId: '',
+                agentUserCode: '',
+                client: 'WhatsApp',
+                platformId: '1'
+            }
+            axios
+                .post(isurl, value, { headers })
+                .then(res => {
+                    console.log(res.data.data)
+                    if (res.data.data !== '') {
+                        this.whatsapp = res.data.data.split(',')
+                    }
+                    var index = Math.floor(Math.random() * this.whatsapp.length)
+                    var url = 'https://api.whatsapp.com/send?phone=+' + this.whatsapp[index] + '&text=HELLO,I WANT TO KNOW HOW TO MAKE MONEY.'
+                    var check = 0 //是否跳转whatsapp 1：直接跳转，0：不跳转
+
+                    if (check == 1) {
+                        window.location.href = url
+                    } else {
+                        this.jump = url
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                    var index = Math.floor(Math.random() * this.whatsapp.length)
+                    var url = 'https://api.whatsapp.com/send?phone=+' + this.whatsapp[index] + '&text=HELLO,I WANT TO KNOW HOW TO MAKE MONEY.'
+                    var check = 0 //是否跳转whatsapp 1：直接跳转，0：不跳转
+
+                    if (check == 1) {
+                        window.location.href = url
+                    } else {
+                        this.jump = url
+                    }
+                })
+            // pc不显示ws按钮
+            var uA = navigator.userAgent.toLowerCase()
+            var ipad = uA.match(/ipad/i) == 'ipad'
+            var iphone = uA.match(/iphone os/i) == 'iphone os'
+            var midp = uA.match(/midp/i) == 'midp'
+            var uc7 = uA.match(/rv:1.2.3.4/i) == 'rv:1.2.3.4'
+            var uc = uA.match(/ucweb/i) == 'ucweb'
+            var android = uA.match(/android/i) == 'android'
+            var windowsce = uA.match(/windows ce/i) == 'windows ce'
+            var windowsmd = uA.match(/windows mobile/i) == 'windows mobile'
+            if (!(ipad || iphone || midp || uc7 || uc || android || windowsce || windowsmd)) {
+                // pc端
+                this.isapp = false
+            }
+        },
+        methods: {}
+    })
+</script>
+
+
+
+<iframe src="{{asset('yfront/saved_resource.html')}}" style="display: none;"></iframe></body></html>

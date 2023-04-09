@@ -1,0 +1,116 @@
+{% extends 'yback.html.twig' %}
+{% block title %}Recalamtion Etat{% endblock %}
+{% block body %}
+
+<body>
+<h2>Statistiques:</h2>
+   <div class="row">
+       <div class="col-4">
+           <div class="card">
+               <div class="card-body">
+                   <!-- Column Chart -->
+                   <div id="columnChart"></div>
+
+                   <script>
+                       document.addEventListener("DOMContentLoaded", () => {
+                           new ApexCharts(document.querySelector("#columnChart"), {
+                               series: [
+                                   {
+                                       name: 'Reclamation technique',
+                                       data: [{{ technique}}]
+                                   },
+                                   {
+                                       name: 'Reclamation offre',
+                                       data: [{{ offre }}]
+                                   },
+                               ],
+                               chart: {
+                                   type: 'bar',
+                                   height: 350
+                               },
+                               plotOptions: {
+                                   bar: {
+                                       horizontal: false,
+                                       columnWidth: '55%',
+                                       endingShape: 'rounded'
+                                   },
+                               },
+                               dataLabels: {
+                                   enabled: false
+                               },
+                               stroke: {
+                                   show: true,
+                                   width: 2,
+                                   colors: ['transparent']
+                               },
+                               xaxis: {
+                                   categories: [' '],
+                               },
+                               yaxis: {
+                                   title: {
+                                       text: 'Nombre des reclamation / categorie'
+                                   }
+                               },
+                               fill: {
+                                   opacity: 1
+                               },
+                               tooltip: {
+                                   y: {
+                                   }
+                               }
+                           }).render();
+                       });
+                   </script>
+
+               </div><!-- End Right side columns -->
+
+           </div>
+       </div>
+       <div class="col-4">
+        <canvas id="etats" ></canvas>
+        <script>
+            let etats = document.querySelector("#etats")
+            let etatsGraph = new Chart(etats, {
+                type: "pie",
+                data: {
+                    labels: {{ etats|raw }},
+                    datasets: [{
+                        label: "état",
+                        data: {{ etatCount|raw }},
+                        backgroundColor: ["red","blue","green"]
+                    }]
+                }
+            })
+        </script>
+    </div>
+       <div class="col-4">
+        <canvas id="reclamations"></canvas>
+        <script>
+            let reclamations = document.querySelector("#reclamations")
+            let annGraph = new Chart(reclamations, {
+                type: "line",
+                data: {
+                    labels: {{ dates|raw }},
+                    datasets: [{
+                        label: "Nombre des reclamations",
+                        data: {{ recCount|raw }}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+
+        </script>
+
+    </div>
+   </div>
+</body>
+</html>
+{%endblock %}

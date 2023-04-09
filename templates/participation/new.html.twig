@@ -1,0 +1,16 @@
+{% extends 'utilisateur/client/base.html.twig' %}
+
+
+
+{% block body %}
+    <br>
+    <br>
+
+
+    {{ include('participation/_form.html.twig') }}
+
+    <a href="{{ path('app_participation_index') {'id': evennement.id}) }}"><input type="submit" value="Back" class="btn btn-primary"></a>
+
+    <br>
+    <br>
+{% endblock %}

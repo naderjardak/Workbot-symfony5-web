@@ -1,0 +1,47 @@
+{% extends 'ytemplate.html.twig' %}
+
+{% block title %}Edit Reclamation{% endblock %}
+{% block consulter %}modification {% endblock %}
+{% block youcef %}
+<div style="padding: 50px">
+    <div style="margin-left: 70px">
+    <h3>Remplisser le formulaire Ci-dessous pour modifier votre réclamation:</h3>
+    <br><br>
+   {#  {{ include('reclamation/_form.html.twig', {'button_label': 'Update'}) }}#}
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+    <table>
+        <tr>
+            <td>{{ form_label(form.objet) }}</td>
+            <td>{{ form_widget(form.objet) }}</td>
+            <td>{{ form_errors(form.objet) }}</td>
+        </tr>
+        <tr>
+            <td><br>{{ form_label(form.description) }}</td>
+            <td><br>{{ form_widget(form.description) }}</td>
+            <td><br>{{ form_errors(form.description) }}</td>
+        </tr>
+        <tr>
+            <td><br>{{ form_label(form.image) }}</td>
+            <td><br>{{ form_widget(form.image) }}</td>
+            <td><br>{{ form_errors(form.image) }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><br>{{ form_widget(form.modifier) }}</td>
+            <td></td>
+        </tr>
+    </table>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_reclamation_index') }}">back to list</a>
+
+    {{ include('reclamation/_delete_form.html.twig') }}
+    </div>
+</div>
+{% endblock %}
+{% block vide %}
+{% endblock %}
+{% block footertopmiddle %}
+{% endblock %}
+{% block footerright %}
+{% endblock %}

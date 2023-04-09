@@ -1,0 +1,187 @@
+{% extends 'offre/templateoffre.html.twig' %}
+
+{% block container %}
+    <br>
+   Details de l'offre :
+{% endblock %}
+  {% block classJobinfo %}{% endblock %}
+    {% block jobinformation %}{% endblock %}
+{% block entretien %}
+
+
+    <div class="job-details section">
+        <div class="container">
+            <div class="row mb-n5">
+
+                <div class="col-lg-8 col-12">
+                    <div class="job-details-inner">
+                        <div class="job-details-head row mx-0">
+                            <div class="company-logo col-auto">
+                                <a href="#" style="border-radius: 4px; overflow: hidden;"><img src="{{ asset('assets/img/favicon.png') }}" alt="Company Logo"></a>
+                            </div>
+                            <div class="salary-type col-auto order-sm-3">
+                                <span class="salary-range">{{ offre.salaire }} £</span>
+                                <span class="badge badge-success">{{ offre.typeoffre }}</span>
+                            </div>
+                            <div class="content col">
+                                <h5 class="title">{{ offre.titre }}</h5>
+                                <ul class="meta">
+                                    <li><strong class="text-primary"><a href="javascript:;">{{ offre.modetravail }}</a></strong>
+                                    </li>
+                                    <li><i class="lni lni-map-marker"></i>{{offre.lieu }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="job-details-body">
+                            <h6 class="mb-3">Job Description</h6>
+                                <p>{{ offre.description }}</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                            <h6 class="mb-3 mt-4">Domaine + Experience</h6>
+                            <ul>
+                                <li>{{ offre.domaine }}</li>
+                                <li>Lorem ipsum dolor sit amet,</li>
+                                <li>Lorem ipsum dolor sit amet,</li>
+
+                            </ul>
+                            <h6 class="mb-3 mt-4">Benefits</h6>
+                            <ul>
+                                <li>Medical insurance</li>
+                                <li>Dental insurance</li>
+                                <li>Vision insurance</li>
+                                <li>Supplemental benefits (Short Term Disability, Cancer &amp; Accident).</li>
+                                <li>Employer-sponsored Basic Life &amp; AD&amp;D Insurance</li>
+                                <li>Employer-sponsored Long Term Disability</li>
+                                <li>Employer-sponsored Value Adds – Fresh Beanies</li>
+                                <li>401(k)with matching</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-12">
+                    <div class="job-details-sidebar">
+
+                        <div class="sidebar-widget">
+                            <div class="inner">
+                                <div class="row m-n2 button">
+                                    <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
+                                        <a  class="d-block btn" href="{{ path('app_offre_edit', {'id': offre.id}) }}">Modifier</a>
+
+                                    </div>
+                                    <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
+                                        <a href="{{ path('app_offre_delete', {'id': offre.id}) }}" class="d-block btn btn-alt"><i class="fa fa-heart-o mr-1"></i> Supprimer</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="sidebar-widget">
+                            <div class="inner">
+                                <h6 class="title">Job Overview</h6>
+                                <ul class="job-overview list-unstyled">
+                                    <li><strong>Published on:</strong>{{offre.dateajout }}</li>
+                                    <li><strong>Employment Status:</strong> Full-time</li>
+                                    <li><strong>Job Location:</strong>{{offre.lieu }}</li>
+                                    <li><strong>Salary:</strong>{{offre.salaire }}£</li>
+                                    <li><strong>Test :</strong>{{test }}</li>
+                                    <li><strong>Application Deadline:</strong>{{offre.dateexpiration }}</li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{#
+    <table class="table" border="3">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offre.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ offre.titre }}</td>
+            </tr>
+            <tr>
+                <th>Salaire</th>
+                <td>{{ offre.salaire }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ offre.description }}</td>
+            </tr>
+            <tr>
+                <th>Domaine</th>
+                <td>{{ offre.domaine }}</td>
+            </tr>
+            <tr>
+                <th>Dateexpiration</th>
+                <td>{{ offre.dateexpiration }}</td>
+            </tr>
+            <tr>
+                <th>Dureestage</th>
+                <td>{{ offre.dureestage }}</td>
+            </tr>
+            <tr>
+                <th>Typestage</th>
+                <td>{{ offre.typestage }}</td>
+            </tr>
+
+            <tr>
+                <th>Typecontrat</th>
+                <td>{{ offre.typecontrat }}</td>
+            </tr>
+
+            <tr>
+                <th>Modetravail</th>
+                <td>{{ offre.modetravail }}</td>
+            </tr>
+            <tr>
+                <th>Lieu</th>
+                <td>{{ offre.lieu }}</td>
+            </tr>
+            <tr>
+                <th>Typeoffre</th>
+                <td>{{ offre.typeoffre }}</td>
+            </tr>
+            <tr>
+                <th>Dateajout</th>
+                <td>{{ offre.dateajout }}</td>
+            </tr>
+
+            <tr>
+                <th>Test</th>
+                <td>
+                    {{ test}}
+                </td>
+
+            </tr>
+
+
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_offre_index') }}">back to list</a>
+
+    <a href="{{ path('app_offre_edit', {'id': offre.id}) }}">edit</a>
+
+    {{ include('offre/_delete_form.html.twig') }}
+
+    #}
+    {% block pagination %}
+    {% endblock %}
+
+    {% endblock %}

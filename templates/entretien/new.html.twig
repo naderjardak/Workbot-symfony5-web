@@ -1,0 +1,25 @@
+{% extends 'offre/templateoffre.html.twig' %}
+
+{% block container %}<br>Créer un entretien{% endblock %}
+{% block retour %}
+    {% for label, messages in app.flashes(['success', 'update','warning']) %}
+        {% for message in messages %}
+            <div class="alert alert-danger -{{ label }}">
+                <div style="text-align: center;">{{ message | upper}}</div>
+            </div>
+        {% endfor %}    {% endfor %}
+<a href="{{ path('app_entretien_index') }}">Retour</a>
+{% endblock %}
+
+{% block section %}
+<section class="job-post section">
+
+    {% endblock %}
+{% block body %}
+    <h1>Create new Entretien</h1>
+
+    {{ include('entretien/_form.html.twig') }}
+</section>
+{% block classJobinfo %}{% endblock %}">
+{% block jobinformation %}{% endblock %}
+{% endblock %}

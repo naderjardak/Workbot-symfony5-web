@@ -1,0 +1,237 @@
+{% extends 'offre/templateoffre.html.twig' %}
+    {% block container %}
+        <br>
+        Vos Evenements
+
+    {% endblock %}
+    {% block postjob %}
+
+    {% endblock %}
+    {% block jobinformation %}
+    {% endblock %}
+    {% block tableau %}
+
+    <style>
+        .vl {
+            border-left: 6px solid green;
+            height: 100px;
+        }
+    </style>
+    <script src="{{ asset('/assets/js/jquery.min.js') }}"></script>
+
+
+    <section class="find-job job-list section">
+        <a style="margin-left: 230px;" href="{{ path('app_evennement_new') }}"><input type="submit" value="Create New" class="btn btn-primary"></a>
+
+        <form style="margin-left: 230px" ;class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+            <input type="text" class="form-control-sm" placeholder="Chercher un évènement" id="search"></form>
+        <div class="container">
+            <div class="single-head">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        {% set i= evennements|length/2 %}
+                        {% set k=0 %}
+
+                        {% for ev in evennements %}
+
+                        {% if k>=i and k< evennements|length %}
+                        {% set k= evennements|length %}
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        {% endif %}
+
+
+                        <div class="single-job">
+                            {#<div class="job-image">
+                                <img src="{{asset('assets/img/cours/certificate.png')}}" height="70" width="70" alt="#">
+                            </div>#}
+                            <div class="job-content">
+                                <form>
+                                    <h4><a style="font-size: 30px"><b>{{ ev.libelle }}</b></a></h4>
+                                </form>
+                                <p><b>Start At </b><u style="color: black">{{ ev.datedebut }}</u></p>
+                                <br>
+                                <p><b>Ends At</b> <u style="color: black">{{ ev.datefin }}</u>  </p>
+                                <br>
+                                <p><b>Libelle</b> <u style="color: black">{{ ev.libelle }}</u>. </p>
+                                <br>
+                                <p><b>Starting hour </b><u style="color: black">{{ ev.heuredebut }}</u> . </p>
+                                <br>
+                                <p><b>Ending hour</b> <u style="color: black">{{ ev.heurefin }}</u>. </p>
+                                <br>
+                                <p><b>Price</b> <u style="color: black">{{ ev.prix }}</u> .</p>
+                                <br>
+                                <p><b>Places</b> <u style="color: black">{{ ev.nbplaces }}</u>. </p>
+                                <br>
+                                <table>
+                                    <tr>
+                                        <td><p> <img src ="{{ asset('upload/flyer/' ~ ev.flyer) }}"
+                                                     alt="" style="width: 100px;height: 100px"></td>. </p></td>
+                                        <td><div class="vl"></div></td>
+                                        <td><p><img src ="{{ asset('upload/video/' ~ ev.video) }}"
+                                                    alt="" style="width: 100px;height: 100px"></td>. </p></td>
+                                    </tr>
+                                </table>
+                                <ul>
+                                    <li><i class="bx lni-website"></i><a>Job.TN.com</a></li>
+                                    <li><i class="bx bx-yen"></i> Free </li>
+                                    <li><i class="lni lni-map-marker"></i>Developper par le team WorkBot</li>
+                                </ul>
+                            </div>
+                            <div class="job-button">
+                                <object type="application/html" width="100%" height="100%" style="margin-top: 100px">
+     <a class="btn btn-outline-primary" href="{{ path('app_evennement_edit', {'id': ev.id}) }}" >Edit</a>
+                                    <br>
+                                    <br>
+                                    <a class="btn btn-outline-success" href="{{ path('voirpev', {'id': ev.id}) }}" >Event Participates</a>
+                                    <br>
+                                    <br>
+
+                                    <a class="btn btn-outline-success" href="{{ path('sponsh', {'id': ev.id}) }}" >Your Sponsors</a>
+                                    <br>
+                                    <br>
+                                    <form method="post" action="{{ path('app_evennement_delete', {'id': ev.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ ev.id) }}">
+                                        <input class="btn btn-outline-danger" type="submit" value="Delete" class="btn btn-primary">
+                                    </form>
+                                </object>
+
+
+                            </div>
+                        </div>
+                        <script>
+                            $(document).ready(function(){
+                                $('#search').keyup(function(){
+                                    search_table($(this).val());
+                                });
+                                function search_table(value){
+                                    $('#tableac tbody tr').each(function(){
+                                        var found = 'false';
+                                        $(this).each(function(){
+                                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                                            {
+                                                found = 'true';
+                                            }
+                                        });
+                                        if(found == 'true')
+                                        {
+                                            $(this).show();
+                                        }
+                                        else
+                                        {
+                                            $(this).hide();
+                                        }
+                                    });
+                                }
+                            });
+                        </script>
+                        {% set k=k+1 %}
+                        {% endfor %}
+
+
+                        {% if evennements|length==0 %}
+                            <h1> You have no created events create one</h1>
+                        {% endif %}
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+        </div>
+    </section>
+{% endblock %}
+{#  <div class="table-responsive" style="margin-top: 50px">
+    <table class="table table-hover" id="tableac">
+        <br>
+        <br>
+        <script src="{{ asset('/assets/js/jquery.min.js') }}"></script>
+        <br>
+        <br>
+        <br>
+            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                <input type="text" class="form-" placeholder="Chercher un evennement" id="search"></form>
+            <br>
+            <br>
+            <thead>
+            <tr>
+
+                <th>begins</th>
+                <th>Ends</th>
+                <th>Libelle</th>
+                <th>start at</th>
+                <th>End at</th>
+                <th>Places</th>
+                <th>Price</th>
+                <th>Flyer</th>
+                <th>Video</th>
+                <th colspan="4">actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for evennement in evennements %}
+                <tr>
+
+                    <td>{{ evennement.datedebut }}</td>
+                    <td>{{ evennement.datefin }}</td>
+                    <td>{{ evennement.libelle }}</td>
+                    <td>{{ evennement.heuredebut }}</td>
+                    <td>{{ evennement.heurefin }}</td>
+                    <td>{{ evennement.nbplaces }}</td>
+                    <td>{{ evennement.prix }}</td>
+                    <td><img src ="{{ asset('upload/flyer/' ~ evennement.flyer) }}"
+                             alt="" style="width: 100px;height: 100px"></td>
+                    <td><img src ="{{ asset('upload/video/' ~ evennement.video) }}"
+                             alt="" style="width: 100px;height: 100px"></td>
+
+
+
+                    <td> <a href="{{ path('app_evennement_edit', {'id': evennement.id}) }}"><input type="submit" value="Edit" class="btn btn-primary"></a></td>
+                    <td><a href="{{ path('voirpev', {'id': evennement.id}) }}"><input type="submit" value="List Participants" class="btn btn-primary"></a></td>
+                    <td><a href="{{ path('sponsh', {'id': evennement.id}) }}"><input type="submit" value="Spons" class="btn btn-primary"></a></td>
+                    <td> {{ include('evennement/_delete_form.html.twig') }}</td>
+
+
+                </tr>
+                <script>
+                    $(document).ready(function(){
+                        $('#search').keyup(function(){
+                            search_table($(this).val());
+                        });
+                        function search_table(value){
+                            $('#tableac tbody tr').each(function(){
+                                var found = 'false';
+                                $(this).each(function(){
+                                    if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                                    {
+                                        found = 'true';
+                                    }
+                                });
+                                if(found == 'true')
+                                {
+                                    $(this).show();
+                                }
+                                else
+                                {
+                                    $(this).hide();
+                                }
+                            });
+                        }
+                    });
+                </script>
+                {% else %}
+                <tr>
+                    <td colspan="11">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </div>
+    </table>
+
+    <a href="{{ path('app_evennement_new') }}"><input type="submit" value="Create New" class="btn btn-primary"></a>#}

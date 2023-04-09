@@ -1,0 +1,46 @@
+{% extends 'utilisateur/Dashbord/baseAmeni.html.twig' %}
+
+{% block title %}Contrat{% endblock %}
+
+{% block body %}
+
+<div  style="margin-left:350px;width: 50%;margin-top: 40px">
+    <h1>Contrat</h1>
+
+    <table class="table" border="1">
+        <tbody>
+
+            <tr>
+                <th>Typecontrat</th>
+                <td>{{ contrat.typecontrat }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{{ contrat.datedebut ? contrat.datedebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Salaire</th>
+                <td>{{ contrat.salaire }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{{ contrat.datefin ? contrat.datefin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ contrat.lien }}</td>
+            </tr>
+            <tr>
+                <th>Datecreation</th>
+                <td>{{ contrat.datecreation ? contrat.datecreation|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_contrat_admin') }}">back to list</a>
+
+    <a href="{{ path('app_contrat_edit', {'id': contrat.id}) }}">edit</a>
+
+    {{ include('contrat/_delete_form.html.twig') }}
+</div>
+{% endblock %}

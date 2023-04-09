@@ -1,0 +1,59 @@
+{% extends 'offre/templateoffre.html.twig' %}
+
+{% block container %}
+    <br>
+    Liste des candidatures pour l'offre : {{ offre }}
+{% endblock %}
+{% block jobinformation %}{% endblock %}
+{% block retour %}
+
+{% endblock %}
+
+    {% block applications %}
+
+        {% for candidature in candidatures %}
+            <div class="resume-item">
+                <img style="margin: auto" src="{{ asset(candidature.photo) }}" alt="Candidate">
+                <div class="right">
+                    <h3>
+                        <a href="{{ asset(candidature.cv) }}">{{ candidature.nom }}</a>
+                    </h3>
+                    <span class="deg">{{ candidature.diplome }}</span>
+                    <ul class="experience">
+                        <li>Experience : <span>{{ candidature.experience }}</span></li>
+                        <li>Note test : <span>{{ candidature.notetest }}</span></li>
+                        <li>Statut : <span>{{ candidature.statut }}</span></li>
+
+
+                        <li>
+                            <i class="lni lni-map-marker"></i>
+                            {{ candidature.address }}
+                        </li>
+                    </ul>
+                    <ul class="skills">
+                        <li>Français : {{ candidature.francais }}</li>
+                        <li>Anglais : {{ candidature.anglais }}</li>
+
+                    </ul>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Dolore, qui aspernatur accusantium! Molestiae, cum cupiditate nam optio
+                        dignissimos magnam velit, perspiciatis amet qui aut nobis, quisquam, laudantium
+                        vitae eos ipsam.</p>
+                    {% if candidature.statut != 'Entretien' %}
+                        <a class="year-exp" href="{{ path('app_entretien_new', {'id': candidature.id}) }}">Entretien</a>
+                    {% else %}
+                        <a class="year-exp" href="{{ path('app_entretien_new', {'id': candidature.id}) }}">Embaucher</a>
+
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <center>
+                <h4>Aucune candidature n"est encore reçu</h4></center>
+        {% endfor %}
+    {% endblock %}
+{% block javascriptTest %}
+{% endblock %}
+
+
+

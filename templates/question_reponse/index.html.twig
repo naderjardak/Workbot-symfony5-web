@@ -1,0 +1,49 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+{% block body %}
+<main id="main" class="main">
+<div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 40px;">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Question Reponse :</h5>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Question</th>
+                <th>ReponseF1</th>
+                <th>ReponseF2</th>
+                <th>ReponseV</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question_reponse in question_reponses %}
+            <tr>
+                <td>{{ question_reponse.id }}</td>
+                <td>{{ question_reponse.question }}</td>
+                <td>{{ question_reponse.reponseF1 }}</td>
+                <td>{{ question_reponse.reponseF2 }}</td>
+                <td>{{ question_reponse.reponseV }}</td>
+                <td>
+                    <a href="{{ path('app_question_reponse_show', {'id': question_reponse.id}) }}">show</a>
+                    <a href="{{ path('app_question_reponse_edit', {'id': question_reponse.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <button onClick="window.history.back();" class="btn btn-outline-dark">Retour</button>
+    {#  <a href="{{ path('app_question_reponse_new') }}">Create new</a>#}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

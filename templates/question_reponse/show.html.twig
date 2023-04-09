@@ -1,0 +1,35 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+{% block body %}
+<main id="main" class="main">
+<h1>QuestionReponse</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ question_reponse.id }}</td>
+            </tr>
+            <tr>
+                <th>Question</th>
+                <td>{{ question_reponse.question }}</td>
+            </tr>
+            <tr>
+                <th>ReponseF1</th>
+                <td>{{ question_reponse.reponseF1 }}</td>
+            </tr>
+            <tr>
+                <th>ReponseF2</th>
+                <td>{{ question_reponse.reponseF2 }}</td>
+            </tr>
+            <tr>
+                <th>ReponseV</th>
+                <td>{{ question_reponse.reponseV }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button onClick="window.history.back();">Go back</button>
+    <a href="{{ path('app_question_reponse_edit', {'id': question_reponse.id}) }}">edit</a>
+
+    {{ include('question_reponse/_delete_form.html.twig') }}
+{% endblock %}

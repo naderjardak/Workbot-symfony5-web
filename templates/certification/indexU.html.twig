@@ -1,0 +1,125 @@
+{% extends 'utilisateur/client/base.html.twig' %}
+{% block info %}
+    <br>
+    <br>
+    <br>
+
+    <section class="apply-process section" style="margin-top: 100px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12" style="border-color: #1a2e3b;border-width: 5px">
+                    <div class="process-item">
+                        <img width="70" height="70" src="{{asset('assets/img/cours/cours.png')}}">
+                        <br>
+                        <a href="/cours/u"><h4>Consulter Les Cours</h4></a>
+                        <p>Consulter nos Cours pour acquérir des nouvelles compétences.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12" >
+                    <div class="process-item">
+                        <img width="70" height="70" src="{{asset('assets/img/cours/certificate1.png')}}">
+                        <br>
+                        <a href="/certification/u/4"><h4>Passer Un Test De Certification</h4></a>
+                        <p>Passer un test de certifications en ligne qui vont booster votre CV.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="process-item">
+                        <img width="70" height="70" src="{{asset('assets/img/cours/badge.png')}}">
+                        <a href="/badge"><h4>Avoir Un Badge</h4></a>
+                        <p>Obtenir un badge « Compétence vérifiée » pour démontrer la maîtrise de certaines compétences affichées sur votre profil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block body %}
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+
+
+    {% for message in app.flashes('mercuryseries_flashy_notification') %}
+        <script id="flashy-template" type="text/template">
+            <div class="flashy flashy--{{ message.type }}">
+                <i class="material-icons">speaker_notes</i>
+                <a class="flashy__body"  ></a>
+            </div>
+        </script>
+
+        <script>
+            flashy("{{ message.message }}", "{{ message.link }}");
+        </script>
+    {% endfor %}
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
+
+    <section class="find-job job-list section">
+    <div class="container">
+        <div class="single-head">
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    {% set i=certif|length/2 %}
+                    {% set k=0 %}
+                    {% for c in certif %}
+
+                    {% if k>=i and k<certif|length %}
+                    {% set k=certif|length %}
+                </div>
+                <div class="col-lg-6 col-12">
+                    {% endif %}
+
+
+                    <div class="single-job">
+                        <div class="job-image">
+                            <img src="{{ asset('upload/cert/'~c.lien) }}" height="70" width="70" alt="#">
+                        </div>
+                        <div class="job-content">
+                            <form>
+                                <h4><a style="font-size: 30px">{{ c.titreCours|upper }}</a></h4>
+                            </form>
+                            <p>Certification de <u style="color: black">{{ c.titreCours|upper }}</u> . </p> <p>Derniere mise ajour <u style="color: black">{{ c.dateAjout }}</u>. </p>
+                            <ul>
+                                <li><i class="bx lni-website"></i><a>Job.TN.com</a></li>
+                                <li><i class="bx bx-yen"></i> Free </li>
+                                <li><i class="lni lni-map-marker"></i>Developper par le team WorkBot</li>
+                            </ul>
+                        </div>
+                        <div class="job-button">
+                            <object type="application/html" width="100%" height="100%">
+                                <a class="btn btn-outline-primary" href="{{ path('app_quiz_test', {'id': c.id}) }}" >Certifier</a>
+                            </object>
+
+
+                        </div>
+                    </div>
+                    {% set k=k+1 %}
+                    {% endfor %}
+
+
+                    {% if certif|length==0 %}
+                    <h1> Vous avez deja obtenu tout les Certificats existant ...</h1>
+                    {% endif %}
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+{% endblock%}
+

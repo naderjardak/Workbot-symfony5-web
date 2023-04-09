@@ -1,0 +1,132 @@
+
+{% extends 'offre/templateoffre.html.twig' %}
+    {% block container %}
+        <br>
+        Editer vos évènements
+
+    {% endblock %}
+    {% block postjob %}
+
+    {% endblock %}
+    {% block jobinformation %}
+    {% endblock %}
+    {% block tableau %}
+    <style>
+        .vl {
+            border-left: 6px solid forestgreen;
+            height: 115px;
+        }
+    </style>
+
+    <section class="find-job job-list section">
+        <div class="container">
+            <div class="single-head">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        {% set i= spons|length/2 %}
+                        {% set k=0 %}
+
+                        {% for s in spons %}
+
+                        {% if k>=i and k< spons|length %}
+                        {% set k= spons|length %}
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        {% endif %}
+
+
+                        <div class="single-job">
+
+                            <div class="job-content">
+
+                                    <h4><a style="font-size: 30px"><b>Your Sponsor</b></a></h4>
+
+                                <table>
+                                    <tr>
+                                        <td><p> <img src ="{{ asset('upload/logo/' ~ s.logo) }}"
+                                                     alt="" style="width: 100px;height: 100px"></td>. </p></td>
+                                        <td><div class="vl"></div></td>
+                                        <td><b><p style="font-size: 20px">{{ s.nom }}</p></b>
+                                    </tr>
+                                </table>
+                                <ul>
+                                    <li><i class="bx lni-website"></i><a>Job.TN.com</a></li>
+                                    <li><i class="bx bx-yen"></i> Free </li>
+                                    <li><i class="lni lni-map-marker"></i>Developper par le team WorkBot</li>
+                                </ul>
+                            </div>
+                            <div class="job-button">
+                                <object type="application/html" width="100%" height="100%" style="margin-top: 100px">
+                                    <a  href="{{ path('app_evennement_index') }}"><input type="submit" value="Back" class="btn btn-outline-success"></a>
+                                    <form method="post" action="{{ path('app_sponsor_delete', {'id': s.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ s.id) }}">
+                                        <button class="btn btn-outline-success">Delete</button>
+                                    </form>
+
+                                    <a href="{{ path('app_sponsor_edit', {'id': s.id}) }}"><input type="submit" value="edit" class="btn btn-outline-success"></a>
+
+                                </object>
+
+
+                            </div>
+                        </div>
+                        {% set k=k+1 %}
+                        {% endfor %}
+
+
+                        {% if spons|length==0 %}
+                            <h2>Vous n'avez pas des sponsors dans cette évènement</h2>
+                        {% endif %}
+
+
+
+
+                    </div>
+                    <a  href="{{ path('app_sponsor_new',{'id':id}) }}"><input type="submit" value="Ajouter sponsor" class="btn btn-outline-success"></a>
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+        </div>
+    </section>
+    {#
+
+
+    <table class="table" style="margin-top: 100px">
+        <thead>
+        <tr>
+            <<th>Nom</th>
+            <th>LOGO</th>
+            <th colspan="3">actions</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for s in spons  %}
+            <tr>
+                <td>{{ s.nom }}</td>
+                <td><img src ="{{ asset('upload/logo/' ~ s.logo) }}"alt="" style="width: 100px;height: 100px"></td>>
+                <td><a href="{{ path('app_sponsor_show', {'id': s.id}) }}"><input type="submit" value="Show" class="btn btn-primary"></a></td>
+
+                <td> <a href="{{ path('app_sponsor_edit', {'id': s.id}) }}"><input type="submit" value="edit" class="btn btn-primary"></a>
+
+
+
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_evennement_index') }}"><input type="submit" value="Back" class="btn btn-primary"></a>
+    <a href="{{ path('app_sponsor_new',{'id':id}) }}"><input type="submit" value="Ajouter sponsor" class="btn btn-primary"></a>
+
+    #}
+
+{% endblock %}

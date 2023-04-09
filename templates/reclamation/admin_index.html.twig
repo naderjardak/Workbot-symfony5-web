@@ -1,0 +1,155 @@
+{% extends 'yback.html.twig' %}
+{% block title %}Récalamtions clients{% endblock %}
+{% block body %}
+    <h2 class="wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Réclamations clients:</h2>
+    <br><br>
+    <table border="1" class="table">
+        <thead>
+        <tr>
+            <th>Reference</th>
+            <th>Titre</th>
+            <th>Dateajout</th>
+            <th>Description</th>
+            <th>Categorie</th>
+            <th>Image</th>
+            <th>Etat</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamation %}
+            <tr>
+                <td>{{ reclamation.id }}</td>
+                <td>{{ reclamation.objet }}</td>
+                <td>{{ reclamation.dateajout ? reclamation.dateajout|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.idCategorie.nomcategorie}}</td>
+                <td><img src ="{{ asset('Upload/images/' ~ reclamation.image) }}"
+                         alt="" style="width: 100px;height: 100px"></td>
+                <td>{{ reclamation.etat }}</td>
+                <td>
+                    <a href="{{ path('app_admin_reclamation_show', {'id': reclamation.id}) }}">consulter</a>
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="d-flex align-items-center justify-content-center">
+        {{ knp_pagination_render(reclamation) }}
+    </div>
+    <div>
+        <h2>Statistiques:</h2>
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Column Chart -->
+                        <div id="columnChart"></div>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                new ApexCharts(document.querySelector("#columnChart"), {
+                                    series: [
+                                        {
+                                            name: 'Reclamation technique',
+                                            data: [{{ technique}}]
+                                        },
+                                        {
+                                            name: 'Reclamation offre',
+                                            data: [{{ offre }}]
+                                        },
+                                    ],
+                                    chart: {
+                                        type: 'bar',
+                                        height: 350
+                                    },
+                                    plotOptions: {
+                                        bar: {
+                                            horizontal: false,
+                                            columnWidth: '55%',
+                                            endingShape: 'rounded'
+                                        },
+                                    },
+                                    dataLabels: {
+                                        enabled: false
+                                    },
+                                    stroke: {
+                                        show: true,
+                                        width: 2,
+                                        colors: ['transparent']
+                                    },
+                                    xaxis: {
+                                        categories: [' '],
+                                    },
+                                    yaxis: {
+                                        title: {
+                                            text: 'Nombre des reclamation / categorie'
+                                        }
+                                    },
+                                    fill: {
+                                        opacity: 1
+                                    },
+                                    tooltip: {
+                                        y: {
+                                        }
+                                    }
+                                }).render();
+                            });
+                        </script>
+
+                    </div><!-- End Right side columns -->
+
+                </div>
+            </div>
+            <div class="col-4">
+                <canvas id="etats" ></canvas>
+                <script>
+                    let etats = document.querySelector("#etats")
+                    let etatsGraph = new Chart(etats, {
+                        type: "pie",
+                        data: {
+                            labels: {{ etats|raw }},
+                            datasets: [{
+                                label: "état",
+                                data: {{ etatCount|raw }},
+                                backgroundColor: ["red","blue","green"]
+                            }]
+                        }
+                    })
+                </script>
+            </div>
+            <div class="col-4">
+                <canvas id="reclamations"></canvas>
+                <script>
+                    let reclamations = document.querySelector("#reclamations")
+                    let annGraph = new Chart(reclamations, {
+                        type: "line",
+                        data: {
+                            labels: {{ dates|raw }},
+                            datasets: [{
+                                label: "Nombre des reclamations",
+                                data: {{ recCount|raw }}
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    })
+
+                </script>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

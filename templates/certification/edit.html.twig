@@ -1,0 +1,19 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+{% block body %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Certification</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>Accueil</a></li>
+                <li class="breadcrumb-item active">Certification</li>
+                <li class="breadcrumb-item active">Modifer Certification</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    {{ include('certification/_formEdit.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}

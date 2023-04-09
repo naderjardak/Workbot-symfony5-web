@@ -1,0 +1,22 @@
+{% extends 'yback.html.twig' %}
+{% block title %}Recalamtion Etat{% endblock %}
+{% block body %}
+    <h2 class="wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Reclamation Etat:</h2>
+    <br><br>
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+    <table>
+
+        <tr>
+            <td><br>{{ form_label(form.etat) }}</td>
+            <td><br>{{ form_widget(form.etat) }}</td>
+            <td><br>{{ form_errors(form.etat) }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><br>{{ form_widget(form.enregister) }}</td>
+            <td></td>
+        </tr>
+    </table>
+    {{ form_end(form) }}
+   {#  <a href="{{ path('app_reclamation_mail') }}">envoyer mail</a>#}
+{% endblock %}

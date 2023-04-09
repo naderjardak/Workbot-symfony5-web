@@ -1,0 +1,62 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+
+
+{% block body %}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Questions</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>Accueil</a></li>
+                <li class="breadcrumb-item active">Quiz</li>
+                <li class="breadcrumb-item active">Questions</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+<div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Question Reponse :</h5>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Question</th>
+            <th>ReponseFause1</th>
+            <th>ReponseFause2</th>
+            <th>ReponseVrai</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for question_reponse in ques %}
+            <tr>
+                <td>{{ question_reponse.question }}</td>
+                <td>{{ question_reponse.reponseF1 }}</td>
+                <td>{{ question_reponse.reponseF2 }}</td>
+                <td>{{ question_reponse.reponseV }}</td>
+                <td>
+                    <a href="{{ path('app_question_reponse_edit', {'id': question_reponse.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas d'information a afficher</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<form action="{{ path('app_quiz_index') }}">
+<input class="btn btn-outline-dark" type="submit" value="Retour">
+</form>
+
+{#<a href="{{ path('app_question_reponse_new') }}">Create new</a>#}
+    </div>
+    </div>
+    </div>
+
+    </div>
+{% endblock %}

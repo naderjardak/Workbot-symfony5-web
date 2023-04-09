@@ -1,0 +1,236 @@
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 280px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: rgb(40,167,69); /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 99999; /* Add a z-index if needed */
+    left: 80%; /* Center the snackbar */
+    height: 50px;
+    bottom: 50px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 50px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 50px; opacity: 1;}
+}
+
+
+body {
+    background-color: #eee
+}
+
+.chat-btn {
+    position: fixed;
+    z-index: 99999999;
+    bottom: 30px;
+    cursor: pointer
+}
+
+.chat-btn .close {
+    display: none
+}
+
+.chat-btn i {
+    transition: all 0.9s ease
+}
+
+#check:checked~.chat-btn i {
+    display: block;
+    pointer-events: auto;
+    transform: rotate(180deg)
+}
+
+#check:checked~.chat-btn .comment {
+    display: none
+}
+
+.chat-btn i {
+    font-size: 22px;
+    color: #fff !important
+}
+
+.chat-btn {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background-color: rgb(40,167,69);
+    color: #fff;
+    font-size: 22px;
+    border: none
+}
+
+.wrapper {
+    z-index: 9999999;
+    position: absolute;
+    bottom: 100px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 5px;
+    display: none;
+    transition: all 0.4s
+}
+
+#check:checked~.wrapper {
+    display: inherit;
+}
+
+.headerChat {
+    padding: 13px;
+    background-color: rgb(40,167,69);
+    border-radius: 5px 5px 0px 0px;
+    margin-bottom: 10px;
+    color: #fff
+}
+
+.chat-form {
+    display: flex;
+    padding: 15px
+}
+
+.chat-form input,
+textarea,
+button {
+    margin-bottom: 10px
+}
+
+.chat-form textarea {
+    resize: none
+}
+
+.form-control:focus,
+.btnChat:focus {
+    box-shadow: none
+}
+
+.btnChat,
+.btnChat:focus,
+.btnChat:hover {
+    background-color: rgb(40,167,69);
+    border: rgb(40,167,69)
+}
+
+#check {
+    display: none !important
+}
+
+.chat-logs {
+    min-height: 170px;
+    max-height: 190px;
+    overflow-y: scroll;
+}
+
+.chat-logs::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+.chat-logs::-webkit-scrollbar
+{
+    width: 5px;
+    background-color: #F5F5F5;
+}
+
+.chat-logs::-webkit-scrollbar-thumb
+{
+    background-color: #5A5EB9;
+}
+
+
+
+@media only screen and (max-width: 500px) {
+    .chat-logs {
+        height:40vh;
+    }
+}
+
+.chat-msg.user > .msg-avatar img {
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    float:left;
+    width:15%;
+}
+.chat-msg.self > .msg-avatar img {
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    float:right;
+    width:15%;
+}
+.cm-msg-text {
+    background:white;
+    padding:10px 15px 10px 15px;
+    color:#666;
+    max-width:75%;
+    float:left;
+    margin-left:10px;
+    position:relative;
+    margin-bottom:20px;
+    border-radius:30px;
+}
+.chat-msg {
+    clear:both;
+}
+.chat-msg.self > .cm-msg-text {
+    float:right;
+    margin-right:10px;
+    background: #5A5EB9;
+    color:white;
+}
+.cm-msg-button>ul>li {
+    list-style:none;
+    float:left;
+    width:50%;
+}
+.cm-msg-button {
+    clear: both;
+    margin-bottom: 70px;
+}
+
+
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    width: 70px;
+    height: 70px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

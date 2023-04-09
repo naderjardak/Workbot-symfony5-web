@@ -1,0 +1,45 @@
+{% extends 'offre/templateoffre.html.twig' %}
+    {% block container %}
+        <br>
+        Ajouter vos sponsors
+
+    {% endblock %}
+    {% block postjob %}
+
+    {% endblock %}
+    {% block jobinformation %}
+    {% endblock %}
+    {% block tableau %}
+
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Nom</th>
+                <th>Logo</th>
+                <th colspan="2">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sponsor in sponsors %}
+            <tr>
+
+                <td>{{ sponsor.nom }}</td>
+
+
+                <td><a href="{{ path('app_sponsor_show', {'id': sponsor.id}) }}"><input type="submit" value="Show" class="btn btn-primary"></a></td>
+
+                   <td> <a href="{{ path('app_sponsor_edit', {'id': sponsor.id}) }}"><input type="submit" value="edit" class="btn btn-primary"></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sponsor_new',{'id':id}) }}"><input type="submit" value="Ajouter un sponsor" class="btn btn-primary"></a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'utilisateur/client/base.html.twig' %}
+
+
+
+{% block body %}
+
+
+    {{ include('participation/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_participation_index') }}"><input type="submit" value="Back" class="btn btn-primary"></a>
+
+    {{ include('participation/_delete_form.html.twig') }}
+{% endblock %}

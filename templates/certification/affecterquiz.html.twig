@@ -1,0 +1,66 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+{% block body %}
+    <main id="main" class="main">
+
+<div class="pagetitle">
+        <h1>Certification</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>Accueil</a></li>
+                <li class="breadcrumb-item active">Certification quiz</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+<!-- Left side columns -->
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Quiz :</h5>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th ><center>Actions</center></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for quiz in quiz %}
+                        <tr>
+                            <td>{{ quiz.titre }}</td>
+                            <td>{{ quiz.description }}</td>
+                            <td>
+                                <a href="{{ path('app_quiz_affecter', {'id': quiz.id,'idc': cer}) }}">Affecter</a>
+                            </td>
+
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <table>
+                    <tr>
+                        <td>
+                            <a href="{{ path('app_certification_index') }}" class="btn btn-primary">Liste de certification</a>
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+                            <a href="{{ path('app_quiz_new') }}" class="btn btn-dark">Cree un nouveau</a>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

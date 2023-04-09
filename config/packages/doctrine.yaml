@@ -15,7 +15,47 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
-
+        dql:
+            datetime_functions:
+                addtime: DoctrineExtensions\Query\Mysql\AddTime
+                convert_tz: DoctrineExtensions\Query\Mysql\ConvertTz
+                date: DoctrineExtensions\Query\Mysql\Date
+                date_format: DoctrineExtensions\Query\Mysql\DateFormat
+                dateadd: DoctrineExtensions\Query\Mysql\DateAdd
+                datesub: DoctrineExtensions\Query\Mysql\DateSub
+                datediff: DoctrineExtensions\Query\Mysql\DateDiff
+                day: DoctrineExtensions\Query\Mysql\Day
+                dayname: DoctrineExtensions\Query\Mysql\DayName
+                dayofweek: DoctrineExtensions\Query\Mysql\DayOfWeek
+                dayofyear: DoctrineExtensions\Query\Mysql\DayOfYear
+                div: DoctrineExtensions\Query\Mysql\Div
+                from_unixtime: DoctrineExtensions\Query\Mysql\FromUnixtime
+                hour: DoctrineExtensions\Query\Mysql\Hour
+                last_day: DoctrineExtensions\Query\Mysql\LastDay
+                makedate: DoctrineExtensions\Query\Mysql\MakeDate
+                minute: DoctrineExtensions\Query\Mysql\Minute
+                now: DoctrineExtensions\Query\Mysql\Now
+                month: DoctrineExtensions\Query\Mysql\Month
+                monthname: DoctrineExtensions\Query\Mysql\MonthName
+                period_diff: DoctrineExtensions\Query\Mysql\PeriodDiff
+                second: DoctrineExtensions\Query\Mysql\Second
+                sectotime: DoctrineExtensions\Query\Mysql\SecToTime
+                strtodate: DoctrineExtensions\Query\Mysql\StrToDate
+                time: DoctrineExtensions\Query\Mysql\Time
+                timediff: DoctrineExtensions\Query\Mysql\TimeDiff
+                timestampadd: DoctrineExtensions\Query\Mysql\TimestampAdd
+                timestampdiff: DoctrineExtensions\Query\Mysql\TimestampDiff
+                timetosec: DoctrineExtensions\Query\Mysql\TimeToSec
+                truncate: DoctrineExtensions\Query\Mysql\Truncate
+                week: DoctrineExtensions\Query\Mysql\Week
+                weekday: DoctrineExtensions\Query\Mysql\WeekDay
+                weekofyear: DoctrineExtensions\Query\Mysql\WeekOfYear
+                year: DoctrineExtensions\Query\Mysql\Year
+                yearmonth: DoctrineExtensions\Query\Mysql\YearMonth
+                yearweek: DoctrineExtensions\Query\Mysql\YearWeek
+                unix_timestamp: DoctrineExtensions\Query\Mysql\UnixTimestamp
+                utc_timestamp: DoctrineExtensions\Query\Mysql\UtcTimestamp
+                extract: DoctrineExtensions\Query\Mysql\Extract
 when@test:
     doctrine:
         dbal:

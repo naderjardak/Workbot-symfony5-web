@@ -1,0 +1,75 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+
+{% block title %}Listes des contrats{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{asset("assets/contratAdmin.css")}}">
+    <script src="{{asset("assets/contratAdmin.js")}}"></script>
+
+<div  style="margin-left:350px;width: 73%;margin-top: 40px">
+    <h1>Tableau des contrats</h1>
+<div style="height: 230px">
+    <h4>Filtres</h4>
+    <div style="display: inline-list-item">
+    <span style="margin: 10px"><input type="checkbox" onclick="showHide('inputCandidat', 'filterCandidat')" class="btn" id="filterCandidat"/><span style="margin-left: 5px">Candidat</span></span>
+        <span style="margin: 10px"><input type="checkbox" onclick="showHide('inputSalaire', 'filterSalaire')" class="btn" id="filterSalaire"/><span style="margin-left: 5px">Salaire</span></span>
+    <span style="margin: 10px"><input type="checkbox" onclick="showHide('inputContrat', 'filterContrat')" class="btn" id="filterContrat"/><span style="margin-left: 5px">Type contrat</span></span>
+    <span style="margin: 10px"><input type="checkbox" onclick="showHide('inputDate', 'filterDate')" class="btn" id="filterDate"/><span style="margin-left: 5px">Date</span></span>
+    <div style="float: right">
+        <div onclick="resetFilters()" id="resetFilters" style="visibility:hidden"><button class="btn btn-info">Réinitialiser les filtres</button></div>
+        <div onclick="applyFilters()" id="filterButton" style="visibility:hidden"><button class="btn btn-success">Appliquer les filtres</button></div>
+    </div>
+    </div>
+        <br>
+        <div style="display: flex">
+            <input style="visibility: hidden;margin-right: 10px" id="inputCandidat" type="text" class="form-control" placeholder="Candidat"/>
+            <input style="visibility: hidden;margin-right: 10px" id="inputSalaire" type="text" class="form-control" placeholder="Salaire supérieur à .."/>
+            <select style="visibility: hidden;margin-right: 10px" id="inputContrat" class="form-control">
+                <option selected value="CDI">CDI</option>
+                <option value="CDD">CDD</option>
+                <option value="CDD(senior)">CDD(senior)</option>
+            </select>
+        </div>
+        <br>
+        <div style="visibility: hidden;display: flex;width: 100%;justify-content: center" id="inputDate">
+            <span style="margin-top: 8px;margin-left: 10px;margin-right: 10px"> De:  </span>
+            <input data-date-format="YYYY-MM-DD" type="date" id="dateDebut"  class="form-control" placeholder="date debut" style="margin-right: 10px"/>
+            <span  style="margin-top: 8px;margin-left: 10px;margin-right: 10px"> à: </span>
+        <input data-date-format="YYYY-MM-DD" type="date" id="dateFin"  class="form-control" placeholder="date fin" style="margin-right: 10px"/>
+    </div>
+</div>
+    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Type contrat</th>
+                <th>Date Debut</th>
+                <th>Date fin</th>
+                <th>Salaire</th>
+                <th>Date creation</th>
+                <th>Candidat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        {% for contrat in contrats %}
+            <tr>
+                <td>{{ contrat.typecontrat }}</td>
+                <td>{{ contrat.datedebut ? contrat.datedebut|date('Y-m-d') : '' }}</td>
+                <td>{{ contrat.datefin ? contrat.datefin|date('Y-m-d') : '' }}</td>
+                <td>{{ contrat.salaire }}</td>
+                <td>{{ contrat.datecreation ? contrat.datecreation|date('Y-m-d') : '' }}</td>
+                <td>{{ contrat.idcandidature.idcondidat.nom}} {{ contrat.idcandidature.idcondidat.prenom}}</td>
+                <td>
+                    <a href="{{ path('app_contrat_admin_show', {'id': contrat.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

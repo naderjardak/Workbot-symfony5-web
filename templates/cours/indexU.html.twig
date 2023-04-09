@@ -1,0 +1,108 @@
+{% extends 'utilisateur/client/base.html.twig' %}
+
+{% block title %}Cours index{% endblock %}
+
+
+{% block info %}
+<br>
+<br>
+<br>
+    <section class="apply-process section" style="margin-top: 100px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12 " >
+                    <div class="process-item" >
+                        <img width="70" height="70" src="{{asset('assets/img/cours/cours.png')}}">
+                        <br>
+                        <a href="/cours/u"><h4>Consulter Les Cours</h4></a>
+                        <p>Consulter nos Cours pour acquérir des nouvelles compétences.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="process-item">
+                        <img width="90" height="90" src="{{asset('assets/img/cours/certificate1.png')}}">
+                        <br>
+                        <a href="/certification/u/4"><h4>Passer Un Test De Certification</h4></a>
+                        <p>Passer un test de certifications en ligne qui vont booster votre CV.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="process-item">
+                        <img width="70" height="70" src="{{asset('assets/img/cours/badge.png')}}">
+                        <a href="/badge"><h4>Avoir Un Badge</h4></a>
+                        <p>Obtenir un badge « Compétence vérifiée » pour démontrer la maîtrise de certaines compétences affichées sur votre profil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block body %}
+
+<section class="find-job job-list section">
+    <div class="container">
+
+                <table id="myTable" class="table table-borderless" >
+                    <thead>
+                    <tr>
+                        <th scope="col" style="visibility: hidden"></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for c in cours %}
+                        <tr>
+                            <td style="visibility: hidden">
+                            {{ c.titre }}
+                            </td>
+                            <td>
+                    <div class="single-job">
+                        <div class="job-image">
+                            <img src="{{asset('upload/chem/'~c.logo)}}" height="70" width="70" alt="#">
+                        </div>
+                        <div class="job-content">
+                            <form>
+                            <h4><a style="font-size: 20px">{{ c.titre|upper }}</a></h4>
+                            </form>
+                            <p>Cours de <u style="color: black">{{ c.titre|upper }}</u>  specialise pour le domaine <u style="color: black">{{ c.domaine|upper }}</u> . </p> <p>C'est un cours <u style="color: black">{{ c.categorie|upper }}</u> . </p>
+                            <ul>
+                                <li><i class="bx lni-website"></i><a>Job.TN.com</a></li>
+                                <li><i class="bx bx-yen"></i> Free </li>
+                                <li><i class="lni lni-map-marker"></i>Developper par le team WorkBot</li>
+                            </ul>
+                        </div>
+                        <div class="job-button">
+                            <object type="application/html" width="100%" height="100%">
+                                <a class="btn btn-outline-primary" target="_blank" href="{{ asset('upload/chem/'~c.chemin)}}" >Afficher</a>
+                            </object>
+                        </div>
+                    </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <script type="text/javascript" src="{{ asset('/media/js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('/media/js/jquery.dataTables.min.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/media/css/jquery.dataTables.min.css')}}">
+
+    <script>
+        $(document).ready(function(){
+            $('#myTable').dataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.13.1/i18n/fr-FR.json"
+                }
+            });
+        });
+    </script>
+{% endblock%}

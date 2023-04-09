@@ -1,0 +1,49 @@
+{% extends 'yback.html.twig' %}
+{% block title %}Récalamtion{% endblock %}
+{% block body %}
+    <h2 class="wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Réclamation:</h2>
+    <br><br>
+    <table border="1" class="table">
+        <tbody>
+        <tr>
+            <th>Reference:</th>
+            <td>{{ reclamation.id }}</td>
+        </tr>
+        <tr>
+            <th>Titre:</th>
+            <td>{{ reclamation.objet }}</td>
+        </tr>
+        <tr>
+            <th>Dateajout:</th>
+            <td>{{ reclamation.dateajout ? reclamation.dateajout|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Description:</th>
+            <td>{{ reclamation.description }}</td>
+        </tr>
+        <tr>
+            <th>Categorie:</th>
+            <td>{{ reclamation.idCategorie.nomcategorie}}</td>
+        </tr>
+
+        <tr>
+            <th>Image:</th>
+            <td><img src ="{{ asset('Upload/images/' ~ reclamation.image) }}"
+                     alt="" style="width: 200px;height: 200px"></td></td>
+        </tr>
+        <tr>
+            <th>Etat:</th>
+            <td>{{ reclamation.etat }}</td>
+            {% if reclamation.etat != 'traitée' %}
+            <td>
+                <form action="{{path('app_admin_reclamation_etat',{'id': reclamation.id})}}">
+                    <button type='submit'>enregistrer comme traitée</button>
+                </form></td>
+            {% endif %}
+        </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_reclamation_index') }}">retour à la liste</a>
+{% endblock %}

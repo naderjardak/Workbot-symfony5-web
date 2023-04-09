@@ -1,0 +1,111 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+{% block title %}Candidature index{% endblock %}
+
+    {% block body %}
+
+
+        <link rel="stylesheet" href="{{asset("assets/candidatureAdmin.css")}}">
+
+        <div  style="width: 100%;margin-top: 70px;height: 100%;overflow-y: auto">
+
+            <br>
+            <br>
+            <br>
+<div style="display: flex;justify-content: center;width: 78%;margin-left: 22%">
+
+<article style="margin-right: 10px" class="leaderboard">
+                <header>
+                    <h1 class="leaderboard__title" style="color: #f0ad4e"><span class="leaderboard__title--top">Candidature</span><span class="leaderboard__title--bottom"> non traitées</span></h1>
+                </header>
+                <main style="max-height: 400px;min-height: 400px;overflow-y: auto;overflow-x: hidden" class="leaderboard__profiles">
+                    <div style="margin-bottom: 20px">
+                        {% if nonTraitees|length ==0 %}
+                        <div style="font-size: 17px;display: flex;width: 100%;justify-content: center;margin-top: 30px" >
+                            Pas de candidatures a affichéés
+                        </div>
+                        {% else %}
+                        {% for candidature in nonTraitees %}
+                                                                                                        <a href="{{ path('app_candidature_show_admin', {'id': candidature.id}) }}">
+                        <article class="leaderboard__profile">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="Mark Zuckerberg" class="leaderboard__picture">
+                            <div class="info">
+
+                                <span class="leaderboard__name"><b>{{ candidature.idcondidat.nom }} {{ candidature.idcondidat.prenom }}</b></span><br>
+                                <span class="leaderboard__name email">Titre: {{ candidature.titre }}</span><br>
+                                <span class="leaderboard__name dateJoined">Date ajout : {{ candidature.dateajout }}</span>
+                                <span class="leaderboard__name dateJoined">Date expiration : {{ candidature.dateexpiration }}</span>
+                                <span class="leaderboard__name scrum" >Cliquer pour ouvrir</span>
+                            </div>
+                        </article>
+                        </a>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+
+                </main>
+            </article>
+    <article style="margin-right: 10px" class="leaderboard">
+        <header>
+            <h1 class="leaderboard__title" style="color: #35d8ac"><span class="leaderboard__title--top">Candidature</span><span class="leaderboard__title--bottom"> acceptées</span></h1>
+        </header>
+        <main style="max-height: 400px;min-height: 400px;overflow-y: auto;overflow-x: hidden" class="leaderboard__profiles">
+            <div style="margin-bottom: 20px">
+                {% if acceptees|length ==0 %}
+                    <div style="font-size: 17px;display: flex;width: 100%;justify-content: center;margin-top: 30px" >
+                        Pas de candidatures a affichéés
+                    </div>
+                {% else %}
+                    {% for candidature in acceptees %}
+                        <a href="{{ path('app_candidature_show_admin', {'id': candidature.id}) }}">
+                            <article class="leaderboard__profile">
+                                <img src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="Mark Zuckerberg" class="leaderboard__picture">
+                                <div class="info">
+
+                                    <span class="leaderboard__name"><b>{{ candidature.idcondidat.nom }} {{ candidature.idcondidat.prenom }}</b></span><br>
+                                    <span class="leaderboard__name email">Titre: {{ candidature.titre }}</span><br>
+                                    <span class="leaderboard__name dateJoined">Date ajout : {{ candidature.dateajout }}</span>
+                                    <span class="leaderboard__name dateJoined">Date expiration : {{ candidature.dateexpiration }}</span>
+                                    <span class="leaderboard__name scrum" >Cliquer pour ouvrir</span>
+                                </div>
+                            </article>
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+        </main>
+    </article>
+    <article style="margin-right: 10px" class="leaderboard">
+        <header>
+            <h1 class="leaderboard__title" style="color: #d9534f"><span class="leaderboard__title--top">Candidature</span><span class="leaderboard__title--bottom"> non accéptées</span></h1>
+        </header>
+        <main style="max-height: 400px;min-height: 400px;overflow-y: auto;overflow-x: hidden" class="leaderboard__profiles">
+            <div style="margin-bottom: 20px">
+                {% if nonAcceptees|length ==0 %}
+                    <div style="font-size: 17px;display: flex;width: 100%;justify-content: center;margin-top: 30px" >
+                        Pas de candidatures a affichéés
+                    </div>
+                {% else %}
+                    {% for candidature in nonAcceptees %}
+                        <a href="{{ path('app_candidature_show_admin', {'id': candidature.id}) }}">
+                            <article class="leaderboard__profile">
+                                <img src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="Mark Zuckerberg" class="leaderboard__picture">
+                                <div class="info">
+
+                                    <span class="leaderboard__name"><b>{{ candidature.idcondidat.nom }} {{ candidature.idcondidat.prenom }}</b></span><br>
+                                    <span class="leaderboard__name email">Titre: {{ candidature.titre }}</span><br>
+                                    <span class="leaderboard__name dateJoined">Date ajout : {{ candidature.dateajout }}</span>
+                                    <span class="leaderboard__name dateJoined">Date expiration : {{ candidature.dateexpiration }}</span>
+                                    <span class="leaderboard__name scrum" >Cliquer pour ouvrir</span>
+                                </div>
+                            </article>
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+        </main>
+    </article>
+</div>
+    </div>
+{% endblock %}

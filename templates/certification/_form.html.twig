@@ -1,0 +1,47 @@
+
+
+<section class="section">
+            <div class="card">
+                <div class="card-body" >
+                    <div style="margin-left: 50px">
+                        <h6 class="card-title" style="display: flex;align-items: center;justify-content: center;font-size: 30px">Certification</h6>
+
+
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Titre Cours </label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.titrecours,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.titrecours) }}
+
+                        </div>
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Titre Teste</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.titretest,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.titretest) }}
+
+                        </div>
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Lien</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.lien,{'attr':{'class':'form-control'}}) }}
+                        </div>
+                        </br>
+                        <div class="col-sm-10" style="display: flex;align-items: center;justify-content: center">
+                            {{ form_widget(form.Valider,{'attr':{'class':'btn btn-success'}}) }}
+                        </div>
+                        {{ form_end(form) }}<!-- End General Form Elements -->
+                        <a href="{{ path('app_certification_index') }}">back to list</a>
+                        <div class="col-sm-10" style="display: flex;align-items: center;justify-content: left">
+                            <button onClick="window.history.back();" class="btn btn-reset">Go back</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+</section>

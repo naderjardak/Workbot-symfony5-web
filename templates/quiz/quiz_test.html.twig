@@ -1,0 +1,143 @@
+{% extends 'utilisateur/client/base.html.twig' %}
+
+
+{% block info %}
+{% endblock %}
+
+
+{% block body %}
+    <section class="section">
+    <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 70px;">
+    <div class="col-lg-8">
+    <div class="card">
+    <div class="card-body" >
+    <div style="margin-left: 50px">
+        <br>
+        <h6 class="card-title" style="display: flex;font-size: 30px;justify-content: center;color: black " >Teste de Certification </h6>
+        <div id="comp"></div>
+        <body>
+        <br>
+        <center><div id="timer" class="btn btn-outline-primary" ></div></center>
+        <br>
+        <div id="path"></div>
+        </body>
+
+        {{ form_start(form) }}
+        <form class="col-xxl-8 col-sm-4" style="margin-left: 30px" >
+
+
+            {% block choice_widget %}
+                <h5>{{ form_label(form.question1) }}</h5>
+                <br>
+                {% for child in form.question1 %}
+
+                    <div class="currency-label">
+                        {{- form_widget(child,{'attr':{'class':'form-check-input'}}) -}}
+                        <a class="form-check-label"> {{- form_label(child, null) -}}</a>
+                    </div>
+
+                {% endfor %}
+                <br>
+
+                <h5> {{ form_label(form.question2) }}</h5>
+                <br>
+                {% for child in form.question2 %}
+                    <div class="currency-label">
+                        {{- form_widget(child,{'attr':{'class':'form-check-input'}}) -}}
+                        <a class="form-check-label"> {{- form_label(child, null) -}}</a>
+                    </div>
+                {% endfor %}
+                <br>
+
+              <h5>{{ form_label(form.question3) }}</h5>
+                <br>
+
+                {% for child in form.question3 %}
+                    <div class="currency-label">
+                        {{- form_widget(child,{'attr':{'class':'form-check-input'}}) -}}
+                        <a class="form-check-label"> {{- form_label(child, null) -}}</a>
+                    </div>
+                {% endfor %}
+                <br>
+
+                <h5>  {{ form_label(form.question4) }}</h5>
+                <br>
+                {% for child in form.question4%}
+                    <div class="currency-label">
+
+                        {{- form_widget(child,{'attr':{'class':'form-check-input'}}) -}}
+                        <a class="form-check-label"> {{- form_label(child, null) -}}</a>
+                    </div>
+                {% endfor %}
+            {% endblock choice_widget %}
+            <br>
+            <center> {{ form_widget(form.Valider,{'attr':{'class':'btn btn-primary'}}) }}</center>
+
+    </div>
+        {{ form_end(form) }}<!-- End General Form Elements -->
+        <br>
+        <audio id="audio" src="{{asset('assets/mp3/monmp3.mp3') }}" ></audio>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        var secondes = 30;
+        console.log(secondes);
+        var v=0;
+        var au=document.getElementById("audio");
+        Start();
+        console.log(secondes);
+
+        function chrono() {
+            secondes -= 1;
+            if (secondes < 0) {
+                 $("#path").html('<meta http-equiv = "refresh" content = "0; url = http://127.0.0.1:8000/certification/u/1" />');
+                secondes = 10;
+                v=1;
+            }
+
+            if(v!==1) {
+                if (secondes < 11) {
+
+                    $("#timer").html('<a style="color: #CB2027;">Temps Restant : ' + secondes + '</a');
+                    au.play();
+                } else {
+                    $("#timer").html('Temps Restant : ' + secondes);
+                }
+            }
+            $("#timer1").html('<h4 style="color: #FFFFFF">'+secondes+'</h4>');
+
+        }
+
+        function Start() {
+            timerID = setInterval(chrono, 1000);
+        }
+
+    });
+
+    </script>
+    <style>
+        body {
+            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    </style>
+
+        <a href="#" class="scroll-top btn-outline-primary" style="display: none;">
+            <i id="timer1"></i>
+        </a>
+
+{% endblock %}
+
+{% block scrolltop %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'ytemplate.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+{% block consulter %} Consulter et l'état de votre réclamation.{% endblock %}
+{% block youcef %}
+<div style="padding: 50px">
+    <h3>Reclamation (reference {{ reclamation.id }}) :</h3>
+    <br><br>
+    <table border="1" class="table">
+        <tbody>
+            <tr>
+                <th>Reference:</th>
+                <td>{{ reclamation.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre:</th>
+                <td>{{ reclamation.objet }}</td>
+            </tr>
+            <tr>
+                <th>Dateajout:</th>
+                <td>{{ reclamation.dateajout ? reclamation.dateajout|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td>{{ reclamation.description }}</td>
+            </tr>
+            <tr>
+                <th>Categorie:</th>
+                <td>{{ reclamation.idCategorie.nomcategorie}}</td>
+            </tr>
+            <tr>
+                <th>Image:</th>
+                <td><img src ="{{ asset('Upload/images/' ~ reclamation.image) }}"
+                         alt="" style="width: 200px;height: 200px"></td></td>
+            </tr>
+            <tr>
+                <th>Etat:</th>
+                <td>{{ reclamation.etat }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+    <table>
+        <tr>
+            <td>
+    <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}" class="btn btn-outline-dark">modifier</a>
+            </td>
+            <td>
+                <div style="margin-left: 15px">
+    {{ include('reclamation/_delete_form.html.twig') }}
+                </div>
+            </td>
+        </tr>
+    </table>
+<br>
+    <a href="{{ path('app_reclamation_index') }}" class="btn btn-outline-secondary">retour à la liste</a>
+</div>
+{% endblock %}
+{% block vide %}
+{% endblock %}
+{% block footertopmiddle %}
+{% endblock %}
+{% block footerright %}
+{% endblock %}

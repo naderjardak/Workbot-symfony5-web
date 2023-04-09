@@ -1,0 +1,179 @@
+{% extends 'candidature/index.html.twig' %}
+{% block body %}
+    <style>
+        .vl {
+            border-left: 6px solid green;
+            height: 70px;
+        }
+    </style>
+
+    <section class="find-job job-list section">
+        <div class="container">
+            <div class="single-head">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        {% set i= evennements22|length/2 %}
+                        {% set k=0 %}
+
+                        {% for ev in evennements22 %}
+
+                        {% if k>=i and k< evennements22|length %}
+                        {% set k= evennements22|length %}
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        {% endif %}
+
+
+                        <div class="single-job">
+
+                            <div class="job-content">
+                                <form>
+                                    <h4><a style="font-size: 30px"><b>Votre évènement</b></a></h4>
+                                </form>
+                                <p><b>Start At </b><u style="color: black">{{ ev.dateDebut }}</u></p>
+                                <br>
+                                <p><b>Ends At</b> <u style="color: black">{{ ev.dateFin }}</u></p>
+                                <br>
+                                <p><b>Libelle</b> <u style="color: black">{{ ev.libelle }}</u>. </p>
+                                <br>
+                                <p><b>Starting hour </b><u style="color: black">{{ ev.heureDebut }}</u> . </p>
+                                <br>
+                                <p><b>Ending hour</b> <u style="color: black">{{ ev.heureFin }}</u>. </p>
+                                <br>
+                                <p><b>Price</b> <u style="color: black">{{ ev.prix }}</u> .</p>
+                                <br>
+                                <p><b>Places</b> <u style="color: black">{{ ev.nbPlaces }}</u>. </p>
+                                <br>
+                                <table>
+                                    <tr>
+                                        <td><p><img src="{{ asset('upload/flyer/' ~ ev.flyer) }}"
+                                                    alt="" style="width: 100px;height: 100px"></td>
+                                        . </p></td>
+                                        <td>
+                                            <div class="vl"></div>
+                                        </td>
+                                        <td><p><img src="{{ asset('upload/video/' ~ ev.video) }}"
+                                                    alt="" style="width: 100px;height: 100px"></td>
+                                        . </p></td>
+                                    </tr>
+                                </table>
+                                <ul>
+                                    <li><i class="bx lni-website"></i><a>Job.TN.com</a></li>
+                                    <li><i class="bx bx-yen"></i> Free</li>
+                                    <li><i class="lni lni-map-marker"></i>Developper par le team WorkBot</li>
+                                </ul>
+                            </div>
+                            <div class="job-button">
+                                <object type="application/html" width="100%" height="100%" style="margin-top: 100px">
+
+
+                                    <a class="btn btn-outline-success" href="{{ path('participer', {'id': ev.id}) }}">Participer</a>
+                                    <br>
+                                    <br>
+
+                                </object>
+
+
+                            </div>
+                        </div>
+                        {% set k=k+1 %}
+                        {% endfor %}
+
+
+                        {% if evennements22|length==0 %}
+                            <h1> Il ny'a pas des évènements a afficher</h1>
+                        {% endif %}
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+        </div>
+    </section>
+{% endblock %}
+{#  <div class="table-responsive" style="margin-top: 50px">
+        <table class="table table-hover" id="tableac">
+            <br>
+            <br>
+            <script src="{{ asset('/assets/js/jquery.min.js') }}"></script>
+            <br>
+            <br>
+            <br>
+            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                <input type="text" class="form-" placeholder="Chercher un evennement" id="search"></form>
+            <br>
+            <br>
+            <thead>
+            <tr>
+
+                <th>begins</th>
+                <th>Ends</th>
+                <th>Libelle</th>
+                <th>start at</th>
+                <th>End at</th>
+                <th>Places</th>
+                <th>Price</th>
+                <th>Flyer</th>
+                <th>Video</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ev in evennements22 %}
+                <tr>
+
+                    <td>{{ ev.dateDebut }}</td>
+                    <td>{{ ev.dateFin }}</td>
+                    <td>{{ ev.libelle }}</td>
+                    <td>{{ ev.heureDebut }}</td>
+                    <td>{{ ev.heureFin }}</td>
+                    <td>{{ ev.nbPlaces }}</td>
+                    <td>{{ ev.prix }}</td>
+                    <td>{{ ev.flyer }}</td>
+                    <td>{{ ev.video }}</td>
+
+
+                    <td> <a href="{{ path('participer', {'id': ev.id}) }}"><input type="submit" value="Participer" class="btn btn-primary"></a></td>
+
+
+
+                </tr>
+                <script>
+                    $(document).ready(function(){
+                        $('#search').keyup(function(){
+                            search_table($(this).val());
+                        });
+                        function search_table(value){
+                            $('#tableac tbody tr').each(function(){
+                                var found = 'false';
+                                $(this).each(function(){
+                                    if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                                    {
+                                        found = 'true';
+                                    }
+                                });
+                                if(found == 'true')
+                                {
+                                    $(this).show();
+                                }
+                                else
+                                {
+                                    $(this).hide();
+                                }
+                            });
+                        }
+                    });
+                </script>
+                {% else %}
+                <tr>
+                    <td colspan="11">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div> #}

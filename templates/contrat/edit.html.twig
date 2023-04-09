@@ -1,0 +1,332 @@
+{% extends 'candidature/index.html.twig' %}
+
+{% block body %}
+    <h1>Edit Contrat</h1>
+
+    {{ include('contrat/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_contrat_index') }}">back to list</a>
+
+    {{ include('contrat/_delete_form.html.twig') }}
+{% endblock % }
+
+
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <link href="{{asset("back/css2.css")}}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{asset("back/bootstrap.min.css")}}">
+    <link rel="stylesheet" href="{{asset("back/LineIcons.2.0.css")}}">
+    <link rel="stylesheet" href="{{asset("back/animate.css")}}">
+    <link rel="stylesheet" href="{{asset("back/tiny-slider.css")}}">
+    <link rel="stylesheet" href="{{asset("back/glightbox.min.css")}}">
+    <link rel="stylesheet" href="{{asset("back/main.css")}}">
+    <link rel="stylesheet" href="{{asset("back/mycss.css")}}">
+</head>
+
+<meta charset="UTF-8">
+
+
+
+<body>
+
+<div id="loading-area" style="opacity: 0; display: none;"></div>
+
+<header class="header other-page">
+    <div class="navbar-area sticky">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand logo" href="https://157781.cc/index.html">
+                            <img class="logo1" src="{{asset("back/logo.svg")}}"alt="Logo">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                            <ul id="nav" class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a href="https://157781.cc/index.html">Home</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="https://157781.cc/index.html">Home 1</a></li>
+                                        <li><a href="https://157781.cc/index2.html">Home 2</a></li>
+                                        <li><a href="https://157781.cc/index3.html">Home 3</a></li>
+                                        <li><a href="https://157781.cc/index4.html">Home 4</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a href="https://157781.cc/post-job.html#">Pages</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="https://157781.cc/about-us.html">About Us</a></li>
+                                        <li><a href="https://157781.cc/job-list.html">Job List</a></li>
+                                        <li><a href="https://157781.cc/job-details.html">Job Details</a></li>
+                                        <li><a href="https://157781.cc/resume.html">Resume Page</a></li>
+                                        <li><a href="https://157781.cc/privacy-policy.html">Privacy Policy</a></li>
+                                        <li><a href="https://157781.cc/faq.html">Faq</a></li>
+                                        <li><a href="https://157781.cc/pricing.html">Our Pricing</a></li>
+                                        <li><a href="https://157781.cc/404.html">404 Error</a></li>
+                                        <li><a href="https://157781.cc/mail-success.html">Mail Success</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a href="{{ path('app_candidature_index')}}">Candidates</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="https://157781.cc/browse-jobs.html">Browse Jobs</a></li>
+                                        <li><a href="https://157781.cc/browse-categories.html">Browse Categories</a></li>
+                                        <li><a href="https://157781.cc/add-resume.html">Add Resume</a></li>
+                                        <li><a href="https://157781.cc/job-alerts.html">Job Alerts</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a href="https://157781.cc/post-job.html#" class="active">Employers </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="https://157781.cc/post-job.html" class="active">Add Job</a></li>
+                                        <li><a href="https://157781.cc/manage-jobs.html">Manage Jobs</a></li>
+                                        <li><a href="https://157781.cc/manage-applications.html">Manage Applications</a></li>
+                                        <li><a href="https://157781.cc/manage-resumes.html">Manage Resume</a></li>
+                                        <li><a href="https://157781.cc/browse-resumes.html">Browse Resumes</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a href="https://157781.cc/post-job.html#">Blog</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="https://157781.cc/blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
+                                        <li><a href="https://157781.cc/blog-single.html">Blog Single</a></li>
+                                        <li><a href="https://157781.cc/blog-single-sidebar.html">Blog Single Sibebar</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a href="https://157781.cc/contact.html">Contact </a> </li>
+                            </ul>
+                        </div>
+
+                        <div class="button">
+                            <a href="javascript:;" data-toggle="modal" data-target="#login" class="login"><i class="lni lni-lock-alt"></i> Login</a>
+                            <a href="javascript:;" data-toggle="modal" data-target="#signup" class="btn">Sign Up</a>
+                        </div>
+                    </nav>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Espace Candidat</h1>
+                    <p>Business plan draws on a wide range of knowledge from different business<br> disciplines.
+                        Business draws on a wide range of different business .</p>
+                </div>
+                <ul class="breadcrumb-nav">
+                    <li><a href="{{ path('app_affichageoffre') }}">Offres</a></li>
+                    <li><a href="{{ path('app_candidature_index') }}">Candidatures</a></li>
+                    <li><a href="{{ path('app_evennement_index2') }}">Evénements</a></li>
+                    <li><a href="{{ path('app_contrat_index') }}">Evénements</a></li>
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% block body %}
+<h1>Edit Contrat</h1>
+
+{{ include('contrat/_form.html.twig', {'button_label': 'Update'}) }}
+
+<a href="{{ path('app_contrat_index') }}">back to list</a>
+
+{{ include('contrat/_delete_form.html.twig') }}
+{% endblock % }
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6 col-12">
+                    <div class="download-text">
+                        <h3>Download Our Best Apps</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do<br> eiusmod tempor
+                            incididunt ut labore et dolore</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="download-button">
+                        <div class="button">
+                            <a class="btn" href="https://157781.cc/post-job.html#"><i class="lni lni-apple"></i> App Store</a>
+                            <a class="btn" href="https://157781.cc/post-job.html#"><i class="lni lni-play-store"></i> Google Play</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+
+                    <div class="f-about single-footer">
+                        <div class="logo">
+                            <a href="https://157781.cc/index.html"><img src="./derniere template_files/logo.svg" alt="Logo"></a>
+                        </div>
+                        <p>Start building your creative website with our awesome template Massive.</p>
+                        <ul class="contact-address">
+                            <li><span>Address:</span> 555 Wall Street, USA, NY</li>
+                            <li><span>Email:</span> example@apus.com</li>
+                            <li><span>Call:</span> 555-555-1234</li>
+                        </ul>
+                        <div class="footer-social">
+                            <ul>
+                                <li><a href="https://157781.cc/post-job.html#"><i class="lni lni-facebook-original"></i></a></li>
+                                <li><a href="https://157781.cc/post-job.html#"><i class="lni lni-twitter-original"></i></a></li>
+                                <li><a href="https://157781.cc/post-job.html#"><i class="lni lni-linkedin-original"></i></a></li>
+                                <li><a href="https://157781.cc/post-job.html#"><i class="lni lni-pinterest"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-8 col-12">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-12">
+
+                            <div class="single-footer f-link">
+                                <h3>For Candidates</h3>
+                                <ul>
+                                    <li><a href="https://157781.cc/post-job.html#">User Dashboard</a></li>
+                                    <li><a href="https://157781.cc/post-job.html#">CV Packages</a></li>
+                                    <li><a href="https://157781.cc/post-job.html#">Jobs Featured</a></li>
+                                    <li><a href="https://157781.cc/post-job.html#">Jobs Urgent</a></li>
+                                    <li><a href="https://157781.cc/post-job.html#">Candidate List</a></li>
+                                    <li><a href="https://157781.cc/post-job.html#">Candidates Grid</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+
+                            <div class="single-footer f-link">
+                                <h3>For Employers</h3>
+                                <ul>
+                                    <li><a href="https://157781.cc/post-job.html#">Post New</a></li>
+                                    <li><a href="https://157781.cc/post-job.html#">Employer List</a></li>
+                                    <li><a href="https://157781.cc/post-job.html#">Employers Grid</a></li>
+                                    <li><a href="https://157781.cc/post-job.html#">Job Packages</a></li>
+                                    <li><a href="https://157781.cc/post-job.html#">Jobs Listing</a></li>
+                                    <li><a href="https://157781.cc/post-job.html#">Jobs Featured</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+
+                            <div class="single-footer newsletter">
+                                <h3>Join Our Newsletter</h3>
+                                <p>Subscribe to get the latest jobs posted, candidates...</p>
+                                <form action="https://157781.cc/mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                                    <input name="EMAIL" placeholder="Your email address" class="common-input" onfocus="this.placeholder = &#39;&#39;" onblur="this.placeholder = &#39;Your email address&#39;" required="" type="email">
+                                    <div class="button">
+                                        <button class="btn">Subscribe Now! <span class="dir-part"></span></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="left">
+                            <p>Copyright © 2022.Company name All rights reserved.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="right">
+                            <ul>
+                                <li><a href="https://157781.cc/post-job.html#">Terms of use</a></li>
+                                <li><a href="https://157781.cc/post-job.html#"> Privacy Policy</a></li>
+                                <li><a href="https://157781.cc/post-job.html#">Faq</a></li>
+                                <li><a href="https://157781.cc/post-job.html#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+
+<a href="https://157781.cc/post-job.html#" class="scroll-top btn-hover" style="display: flex;">
+    <i class="lni lni-chevron-up"></i>
+</a>
+
+<script src="{{asset("back/bootstrap.min.js.télécharger")}}"></script>
+<script src="{{asset("assets/reloadNotifications.js")}}"></script>
+<script src="{{asset("assets/common.js")}}"></script>
+<script src="{{asset("back/jquery-3.3.1.min.js")}}"></script>
+<script src="{{asset("back/wow.min.js.télécharger")}}"></script>
+<script src="{{asset("back/tiny-slider.js.télécharger")}}"></script>
+<script src="{{asset("back/glightbox.min.js.télécharger")}}"></script>
+<script src="{{asset("back/main.js.télécharger")}}"></script>
+
+
+<!-- snackbar -->
+<div id="snackbar"><span id="snackText"></span>Votre candidature a été acceptée !<a target="_blank" style="float:right;margin-top: -5px;margin-right:5px;font-size:20px;color: white;cursor: pointer;font-weight: bolder;text-decoration: none" id="contractUrl" href=""><span title="Voir contrat">↗</span></a></div>
+
+
+
+<!-- chat -->
+<input onclick="openCloseChat()" type="checkbox" id="check">
+<label class="chat-btn" style="left: 14px;background-color: greenyellow" for="check">
+    <svg style="height: 30px;width:30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 448c141.4 0 256-93.1 256-208S397.4 32 256 32S0 125.1 0 240c0 45.1 17.7 86.8 47.7 120.9c-1.9 24.5-11.4 46.3-21.4 62.9c-5.5 9.2-11.1 16.6-15.2 21.6c-2.1 2.5-3.7 4.4-4.9 5.7c-.6 .6-1 1.1-1.3 1.4l-.3 .3 0 0 0 0 0 0 0 0c-4.6 4.6-5.9 11.4-3.4 17.4c2.5 6 8.3 9.9 14.8 9.9c28.7 0 57.6-8.9 81.6-19.3c22.9-10 42.4-21.9 54.3-30.6c31.8 11.5 67 17.9 104.1 17.9zM128 272c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32zm128 0c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32zm160-32c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z"/></svg>
+    <i class="fa fa-close close"></i>
+</label>
+
+<div class="wrapper" style="left: 20px">
+    <div class="headerChat">
+        <h6 style="color: white">Service utilisateur - Direct</h6>
+    </div>
+    <div class="text-center p-2" style="height: 220px">
+        <div class="loaderDiv" id="loaderDiv">
+            <span style="font-weight: bolder">Un assistant sera avec vous dans une minute...</span><br>
+            <div style="display: flex;justify-content: center;padding-top: 30px">
+                <div class="loader"></div>
+            </div>
+        </div>
+        <div class="chat-logs" style="display: none" id="texts">
+
+        </div>
+    </div> <div class="chat-form" id="chatForm" style="display: none">
+        <input onkeyup="sendUserBykeyboard(event)" id="userChatInput" style="width: 68%" type="text" class="form-control" placeholder="Text...">
+        <button onclick="sendMessageUser()" style="width: 110px;margin-left: 10px" id="userChatButton" class="btn btn-success btn-block btnChat">Envoyer !</button>
+    </div>
+</div>
+<!-- end chat -->
+</body>
+</html>

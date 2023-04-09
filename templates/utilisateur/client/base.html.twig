@@ -1,0 +1,323 @@
+<html class="no-js" lang="zxx"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JobTN</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    {% block stylesheets %}
+        <link href="{{asset('assets/css2.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{asset('assets/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/LineIcons.2.0.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/animate.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/tiny-slider.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/glightbox.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/main.css')}}">
+    {% endblock %}
+
+    <style></style>
+    <style></style>
+    <style></style>
+    <style type="text/css"> @font-face { font-family: Roboto; src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf"); }</style><script type="text/javascript" async="" src="{{asset('assets/ga.js.téléchargé')}}"></script><script type="text/javascript" src="{{asset('assets/001.js.téléchargé')}}"></script><script type="text/javascript" async="" src="{{asset('assets/taas')}}"></script></head>
+<body>
+
+<div id="loading-area" style="opacity: 0 ; display: none;"></div>
+{% block header %}
+    <header class="header">
+        <div class="navbar-area" height="30px">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand logo" href="#">
+                                <img class="logo1" src="{{asset('assets/logo.png')}}" alt="Logo">
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="active" href="">Accueil</a>
+                                    </li>
+                                    <li class="nav-item"><a href="{{path('app_reclamation_index')}}">Reclamation </a></li>
+                                    <li class="nav-item"><a href="#">Contact</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="#">Facebook</a></li>
+                                            <li><a href="#">Twitter</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item"><a href="#">Localisation</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{{path('contacter_cours')}}">Maps</a></li>
+                                        </ul>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="button">
+                                <a href="{{ path('app_logout') }}"   class="btn">Déconnecter</a>
+                            </div>
+                        </nav>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+{% endblock %}
+{% block info %}
+{% endblock %}
+
+{% block body %}
+
+
+{% endblock %}
+
+
+{% block footer %}
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6 col-12">
+                    <div class="download-text">
+                        <h3>Téléchargez notre meilleure application</h3>
+                        <p>Téléchargez notre application de bureau et profitez d'un usage local sans intermédiaire .</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="download-button">
+                        <div class="button">
+                            <a class="btn" href="https://www.mediafire.com/#" target="_blank"><i class="lni lni-apple"></i> Media File</a>
+                            <a class="btn" href="https://drive.google.com/#" target="_blank"><i class="lni lni-play-store"></i> Google Drive</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+
+                    <div class="f-about single-footer">
+                        <div class="logo">
+                            <a href="firstpage"><img src="{{asset('assets/logo.png')}}" alt="Logo"></a>
+                        </div>
+                        <p>Start building your creative website with our awesome template Massive.</p>
+                        <ul class="contact-address">
+                            <li><span>Address:</span> 555 Wall Street, USA, NY</li>
+                            <li><span>Email:</span> example@apus.com</li>
+                            <li><span>Call:</span> 555-555-1234</li>
+                        </ul>
+                        <div class="footer-social">
+                            <ul>
+                                <li><a href="#"><i class="lni lni-facebook-original"></i></a></li>
+                                <li><a href="#"><i class="lni lni-twitter-original"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-8 col-12">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-12">
+
+                            <div class="single-footer f-link">
+                                <h3>For Candidates</h3>
+                                <ul>
+                                    <li><a href="#">User Dashboard</a></li>
+                                    <li><a href="#">CV Packages</a></li>
+                                    <li><a href="#">Jobs Featured</a></li>
+                                    <li><a href="#">Jobs Urgent</a></li>
+                                    <li><a href="#">Candidate List</a></li>
+                                    <li><a href="#">Candidates Grid</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+
+                            <div class="single-footer f-link">
+                                <h3>For Employers</h3>
+                                <ul>
+                                    <li><a href="#">Post New</a></li>
+                                    <li><a href="#">Employer List</a></li>
+                                    <li><a href="#">Employers Grid</a></li>
+                                    <li><a href="#">Job Packages</a></li>
+                                    <li><a href="#">Jobs Listing</a></li>
+                                    <li><a href="#">Jobs Featured</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+
+                            <div class="single-footer newsletter">
+                                <h3>Join Our Newsletter</h3>
+                                <p>Subscribe to get the latest jobs posted, candidates...</p>
+                                <form action="https://157781.cc/mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                                    <input name="EMAIL" placeholder="Your email address" class="common-input" onfocus="this.placeholder = &#39;&#39;" onblur="this.placeholder =&#39;Your email address&#39;" required="" type="email">
+                                    <div class="button">
+                                        <button class="btn">Envoyer ! <span class="dir-part"></span></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="left">
+                            <p>Droits d'auteur © 2022.JOB.TN .Tous les droits sont réservés</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="right">
+                            <ul>
+                                <li><a href="#">Conditions d'utilisation</a></li>
+                                <li><a href="#">Politique de confidentialité</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+{% endblock %}
+
+{% block scrolltop %}
+<a href="https://157781.cc/index2.html#" class="scroll-top btn-hover" style="display: none;">
+    <i class="lni lni-chevron-up"></i>
+</a>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{asset('assets/bootstrap.min.js.téléchargé')}}"></script>
+    <script src="{{asset('assets/wow.min.js.téléchargé')}}"></script>
+    <script src="{{asset('assets/tiny-slider.js.téléchargé')}}"></script>
+    <script src="{{asset('assets/glightbox.min.js.téléchargé')}}"></script>
+    <script src="{{asset('assets/main.js.téléchargé')}}"></script>
+{% endblock %}
+
+{% block slider %}
+<script type="text/javascript">
+
+    //====== Clients Logo Slider
+    tns({
+        container: '.client-logo-carousel',
+        slideBy: 'page',
+        autoplay: true,
+        autoplayButtonOutput: false,
+        mouseDrag: true,
+        gutter: 15,
+        nav: false,
+        controls: false,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            540: {
+                items: 2,
+            },
+            768: {
+                items: 3,
+            },
+            992: {
+                items: 4,
+            },
+            1170: {
+                items: 6,
+            }
+        }
+    });
+    //========= testimonial
+    tns({
+        container: '.testimonial-slider',
+        items: 1,
+        slideBy: 'page',
+        autoplayButtonOutput: false,
+        autoplay: true,
+        mouseDrag: true,
+        gutter: 0,
+        nav: false,
+        controls: true,
+        controlsText: ['<i class="lni lni-arrow-left"></i>', '<i class="lni lni-arrow-right"></i>'],
+        responsive: {
+            0: {
+                items: 1,
+            },
+            540: {
+                items: 1,
+            },
+            768: {
+                items: 1,
+            },
+            992: {
+                items: 1,
+            },
+            1170: {
+                items: 1,
+            }
+        }
+    });
+
+    //======== Home Slider
+    var slider = new tns({
+        container: '.home-slider',
+        slideBy: 'page',
+        autoplay: true,
+        autoplayButtonOutput: false,
+        mouseDrag: true,
+        gutter: 0,
+        items: 1,
+        nav: false,
+        controls: true,
+        controlsText: [
+            '<i class="lni lni-arrow-left prev"></i>',
+            '<i class="lni lni-arrow-right next"></i>'
+        ],
+        responsive: {
+            1200: {
+                items: 1,
+            },
+            992: {
+                items: 1,
+            },
+            0: {
+                items: 1,
+            }
+
+        }
+    });
+</script>
+
+<iframe src="{{asset('assets/saved_resource.html')}}" style="display: none;">
+
+</iframe>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,143 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+{% block title %}Ads{% endblock %}
+
+
+{% block body %}
+    <div class="card mb-3">
+    <div class="card-body" style="margin-left: 350px;margin-top: 80px">
+        <h3 class="card-title">Ads</h3>
+
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Ads</a></li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row" style="display: flex;align-items: center;margin-left: 350px ">
+        <div class="col-lg-9">
+            <div class="col-12">
+                <div class="col-11,5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Liste des Ads activée</h5>
+
+                    <!-- Default Table -->
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>NombreAds</th>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Date d'expiration</th>
+                            <th>Status</th>
+                            <th>Supprimer</th>
+                            <th>Desactiver</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for f in ads %}
+                            <tr>
+                                <td>
+                                        {{ f.nombreAds }} <a href="{{ path('app_utilisateur_adsnumber', {'id': f.id}) }}">++</a>
+                                   </td>
+                                <td>{{ f.nom }}</td>
+                                <td><a href="{{ path('app_ads_show', {'id': f.id}) }}" class="text-primary">{{ f.type }} </a></td>
+                                <td>{{f.dateFin.format('d/m/Y') }}</td>
+                                <td>{{f.status}}</td>
+                                <td>
+                           <button class="bg-danger-light"> <a href="{{path('deleteads', {'id': f.id}) }}"method="post" >delete</a></button>
+
+                                </td>
+                                <td>   <button class="bg-primary-light"><a href="{{path('app_ads_status', {'id': f.id}) }}"method="post" >desactiver</a></button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <a href="{{ path('app_ads_new') }}">Create new</a>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" style="display: flex;align-items: center;margin-left: 350px ;">
+        <div class="col-lg-9">
+            <div class="col-12">
+                <div class="col-11,5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Liste des Ads expiréé</h5>
+
+                            <!-- Default Table -->
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>NombreAds</th>
+                                    <th>Nom</th>
+                                    <th>Type</th>
+                                    <th>Date d'expiration</th>
+                                    <th>Actions</th>
+                                    <th>image</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for f in adss %}
+                                    <tr>
+                                        <td>
+                                            {{ f.nombreAds }}
+                                        </td>
+                                        <td>{{ f.nom }}</td>
+                                        <td><a href="{{ path('app_ads_show', {'id': f.id}) }}" class="text-primary">{{ f.type }} </a></td>
+                                        <td>{{ f.dateFin.format('d/m/Y') }}</td>
+                                        <td>
+                                    <button class="bg-danger-light"><a href="{{path('deleteads', {'id': f.id}) }}"method="post" >delete</a></button>
+                                        </td>
+                                        <td><img src ="{{ asset('upload/ads/' ~ f.photo) }}"
+                                                 alt="" style="width: 100px;height: 100px"></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <a href="{{ path('app_ads_new') }}">Create new</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+{% endblock %}
+
+{#
+{% block body %}
+<table class=".datatable">
+      <div class="row">
+
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Datatables</h5>
+              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
+
+              <!-- Table with stripped rows -->
+              <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"><div class="dataTable-top"><div class="dataTable-dropdown"><label><select class="dataTable-selector"><option value="5">5</option><option value="10" selected="">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option></select> entries per page</label></div><div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"></div></div><div class="dataTable-container"><table class="table datatable dataTable-table">
+                <thead>
+                  <tr><th scope="col" data-sortable="" style="width: 6%;" class="desc"><a href="#" class="dataTable-sorter">#</a></th><th scope="col" data-sortable="" style="width: 27.8%;" class=""><a href="#" class="dataTable-sorter">Name</a></th><th scope="col" data-sortable="" style="width: 37%;"><a href="#" class="dataTable-sorter">Position</a></th><th scope="col" data-sortable="" style="width: 10%;"><a href="#" class="dataTable-sorter">Age</a></th><th scope="col" data-sortable="" style="width: 19.2%;"><a href="#" class="dataTable-sorter">Start Date</a></th></tr>
+                </thead>
+                <tbody><tr><th scope="row">5</th><td>Raheem Lehner</td><td>Dynamic Division Officer</td><td>47</td><td>2011-04-19</td></tr><tr><th scope="row">4</th><td>Angus Grady</td><td>HR</td><td>34</td><td>2012-06-11</td></tr><tr><th scope="row">3</th><td>Ashleigh Langosh</td><td>Finance</td><td>45</td><td>2011-08-12</td></tr><tr><th scope="row">2</th><td>Bridie Kessler</td><td>Developer</td><td>35</td><td>2014-12-05</td></tr><tr><th scope="row">1</th><td>Brandon Jacob</td><td>Designer</td><td>28</td><td>2016-05-25</td></tr></tbody>
+              </table></div><div class="dataTable-bottom"><div class="dataTable-info">Showing 1 to 5 of 5 entries</div><nav class="dataTable-pagination"><ul class="dataTable-pagination-list"></ul></nav></div></div>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+        </div>
+        </div>
+</table>
+{% endblock %}
+#}

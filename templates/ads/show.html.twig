@@ -1,0 +1,77 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+{% block body %}
+
+    <div class="row" style="display: flex;align-items: center;justify-content: center; margin-top: 100px">
+
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ ads.type }}</h5>
+                    <p class="card-text">Ce pack est valable uniquement + 30 jours debut de mois  {{ads.dateFin.format('d/m/Y') }} pour le client du nom: {{ ads.nom }}.</p>
+                    <a href="" class="btn btn-primary">Renouvellement de l'abonnement</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Test de l'affichage</h5>
+                    <p class="card-text">corriger l'image ou la vidéo pour conserver une bonne expérience d'utilisateur .</p>
+
+                    <a href="{{ path('app_ads_showads')}}" class="btn btn-primary">Good User Interface and experience</a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <table>
+
+        <tr>
+            <div class="row" style="display: flex;align-items: center;justify-content: center;">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Line Chart</h5>
+
+                            <!-- Line Chart -->
+                            <canvas id="lineChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 820px;" width="820" height="400"></canvas>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    new Chart(document.querySelector('#lineChart'), {
+                                        type: 'line',
+                                        data: {
+                                            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                                            datasets: [{
+                                                label: 'Line Chart',
+                                                data: [65, 59, 80, 81, 56, 55, 40],
+                                                fill: false,
+                                                borderColor: 'rgb(75, 192, 192)',
+                                                tension: 0.1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            }
+                                        }
+                                    });
+                                });
+                            </script>
+                            <!-- End Line CHart -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </tr>
+
+    </table>
+
+
+{% endblock %}

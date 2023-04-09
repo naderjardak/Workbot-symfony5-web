@@ -1,0 +1,30 @@
+{% extends 'utilisateur/client/base.html.twig' %}
+
+
+
+{% block body %}
+<br>
+    <br>
+    <br>
+    <br>
+
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ sponsor.nom }}</td>
+            </tr>
+            <tr>
+                <th>Logo</th>
+                <td>{{ sponsor.logo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sponsor_index') }}"><input type="submit" value="Back" class="btn btn-primary"></a>
+
+    <a href="{{ path('app_sponsor_edit', {'id': sponsor.id}) }}"><input type="submit" value="Edit" class="btn btn-primary"></a>
+
+    <a{{ include('sponsor/_delete_form.html.twig') }}</a>
+{% endblock %}

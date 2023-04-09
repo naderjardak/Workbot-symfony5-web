@@ -1,0 +1,19 @@
+{% extends 'offre/templateoffre.html.twig' %}
+    {% block container %}
+        <br>
+        Vos Evenements
+
+    {% endblock %}
+    {% block postjob %}
+
+    {% endblock %}
+    {% block jobinformation %}
+    {% endblock %}
+    {% block tableau %}
+
+
+
+        {{ include('evennement/_form.html.twig') }}
+
+    <a href="{{ path('app_evennement_index') }}"><input type="submit" value="Back" class="btn btn-primary"></a>
+{% endblock %}

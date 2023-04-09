@@ -1,0 +1,72 @@
+{% extends 'candidature/index.html.twig' %}
+
+{% block title %}Offre{% endblock %}
+
+{% block body %}
+    <h1>Offre</h1>
+
+    <table class="table" border="1">
+        <tbody>
+
+        <tr>
+            <th>Titre</th>
+            <td>{{ offre.titre }}</td>
+        </tr>
+        <tr>
+            <th>Salaire</th>
+            <td>{{ offre.salaire }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ offre.description }}</td>
+        </tr>
+        <tr>
+            <th>Domaine</th>
+            <td>{{ offre.domaine }}</td>
+        </tr>
+        <tr>
+            <th>Dateexpiration</th>
+            <td>{{ offre.dateexpiration }}</td>
+        </tr>
+        <tr>
+            <th>Dureestage</th>
+            <td>{{ offre.dureestage }}</td>
+        </tr>
+        <tr>
+            <th>Typestage</th>
+            <td>{{ offre.typestage }}</td>
+        </tr>
+        <tr>
+            <th>Dureecontrat</th>
+            <td>{{ offre.dureecontrat }}</td>
+        </tr>
+        <tr>
+            <th>Typecontrat</th>
+            <td>{{ offre.typecontrat }}</td>
+        </tr>
+        <tr>
+            <th>Anneeexperience</th>
+            <td>{{ offre.anneeexperience }}</td>
+        </tr>
+        <tr>
+            <th>Modetravail</th>
+            <td>{{ offre.modetravail }}</td>
+        </tr>
+        <tr>
+            <th>Lieu</th>
+            <td>{{ offre.lieu }}</td>
+        </tr>
+        <tr>
+            <th>Typeoffre</th>
+            <td>{{ offre.typeoffre }}</td>
+        </tr>
+        <tr>
+            <th>Dateajout</th>
+            <td>{{ offre.dateajout }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_affichageoffre') }}">back to list</a>
+    <a href="{{ path('app_candidature_new', {'id': offre.id}) }}">postuler</a>
+{% endblock %}

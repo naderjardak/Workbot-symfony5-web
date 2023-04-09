@@ -1,0 +1,84 @@
+{% extends 'utilisateur/Dashbord/baseAmeni.html.twig' %}
+
+{% block title %}Candidature{% endblock %}
+
+{% block body %}
+
+<div  style="margin-left:350px;width: 100%;margin-top: 40px">
+    <h1>Candidature</h1>
+
+    <table class="table table-responsive">
+        <tbody>
+
+
+        <tr>
+            <th>Candidat</th>
+            <td>{{ candidature.idcondidat.nom }} {{ candidature.idcondidat.prenom }}</td>
+        </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ candidature.statut }}</td>
+            </tr>
+            <tr>
+                <th>Lettremotivation</th>
+                <td>{{ candidature.lettremotivation }}</td>
+            </tr>
+            <tr>
+                <th>Notetest</th>
+                <td>{{ candidature.notetest }}</td>
+            </tr>
+            <tr>
+                <th>Dateajout</th>
+                <td>{{ candidature.dateajout }}</td>
+            </tr>
+            <tr>
+                <th>Cv</th>
+                <td>{{ candidature.cv }}</td>
+            </tr>
+            <tr>
+                <th>Niveaufrancais</th>
+                <td>{{ candidature.niveaufrancais }}</td>
+            </tr>
+            <tr>
+                <th>Niveauanglais</th>
+                <td>{{ candidature.niveauanglais }}</td>
+            </tr>
+            <tr>
+                <th>Diplome</th>
+                <td>{{ candidature.diplome }}</td>
+            </tr>
+            <tr>
+                <th>Dateexpiration</th>
+                <td>{{ candidature.dateexpiration }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ candidature.titre }}</td>
+            </tr>
+            <tr>
+                <th>Typecondidature</th>
+                <td>{{ candidature.typecondidature }}</td>
+            </tr>
+            <tr>
+                <th>Experience</th>
+                <td>{{ candidature.experience }}</td>
+            </tr>
+            <tr>
+                <th>Domaine</th>
+                <td>{{ candidature.domaine }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="display: flex;margin: 10px;width: 100%">
+
+        {% if candidature.statut=='non traité' %}
+        <a href="{{ path('app_contrat_new', {'id':candidature.id}) }}"><button class="btn btn-success">Accepter candidature</button></a>
+        <a href="{{ path('refuser_candidature', {'id':candidature.id}) }}"> <button class="btn btn-warning" style="margin-left: 20px;margin-right: 20px">Refuser candidature</button></a>
+
+        {% endif %}
+        {{ include('candidature/_delete_form.html.twig') }}
+        <a href="{{ path('app_candidature_dashboard') }}"><button class="btn btn-info" style="margin-left: 20px">Retour à la liste</button></a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,193 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Offre;
+use App\Form\OffreEmploiType;
+use App\Form\OffreStageType;
+use App\Form\TypeOffreType;
+use App\Repository\OffreRepository;
+use App\Form\OffreFreelancerType;
+use App\Repository\UtilisateurRepository;
+use Doctrine\ORM\EntityManager;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\ChoiceQuestion;
+use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\SubmitButtonBuilder;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Console\Command\Command;
+
+
+
+#[Route('/offre')]
+class OffreController extends AbstractController
+{
+
+
+    #[Route('/', name: 'app_offre_index', methods: ['GET'])]
+    public function index(OffreRepository $offreRepository): Response
+    {
+        return $this->render('offre/index.html.twig', [
+            'offres' => $offreRepository->findAll(),
+        ]);
+    }
+    var int $resultat=0;
+    #[Route('/new', name: 'app_offre_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, OffreRepository $offreRepository,UtilisateurRepository $repository): ?Response
+    {
+        $typeOffre = [];
+        $form1 = $this->createForm(TypeOffreType::class, $typeOffre)
+            //->add("Suivant", SubmitType::class)
+        ;
+        $form1->handleRequest($request);
+
+        if ($form1->isSubmitted()) {
+            $typeOffre = $form1->getData();
+            var_dump($typeOffre);
+            if ($typeOffre['Typeoffre'] === 'Stage') {
+                echo 'lol';
+
+                $offre = new Offre();
+                $form1 = $this->createForm(OffreStageType::class, $offre)
+                   // ->add('Ajouter', SubmitType::class)
+                ;
+                $form1->handleRequest($request);
+                echo 'lol1';
+
+                if ($form1->isSubmitted() && $form1->isValid()) {
+                    $soc = $repository->find(8);
+                    // var_dump($soc);
+                    $offre->setIdSoc($soc);
+                    var_dump($offre->getIdSoc());
+
+                    $offre->setDomaine('Info');
+                    $offre->setTypeoffre('Stage');
+                    $offre->setDateajout(date('DD-MM-YY'));
+                    $offreRepository->save($offre, true);
+
+                    return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
+                }
+                {
+                    echo 'hi';
+                    return $this->renderForm('offre/new.html.twig', [
+                        'offre' => $offre,
+                        'form' => $form1
+                    ]);
+                }
+            } else if ($typeOffre['Typeoffre'] === 'Emploi') {
+
+
+                $offre = new Offre();
+                $form1 = $this->createForm(OffreEmploiType::class, $offre)
+                   // ->add('Ajouter', SubmitType::class)
+                ;
+                $form1->handleRequest($request);
+
+
+                if ($form1->isSubmitted() && $form1->isValid()) {
+                    $soc = $repository->find(8);
+                    // var_dump($soc);
+                    $offre->setIdSoc($soc);
+                    var_dump($offre->getIdSoc());
+
+                    $offre->setDomaine('Info');
+                    $offre->setTypeoffre('Stage');
+                    $offre->setDateajout(date('DD-MM-YY'));
+                    $offreRepository->save($offre, true);
+
+                    return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
+                }
+                {
+                    return $this->renderForm('offre/new.html.twig', [
+                        'offre' => $typeOffre,
+                        'form' => $form1
+                    ]);
+                }
+            } else {
+
+
+                $offre = new Offre();
+                $form1 = $this->createForm(OffreFreelancerType::class, $offre)
+                   // ->add('Ajouter', SubmitType::class)
+                ;
+                echo 'lol';
+                $form1->handleRequest($request);
+                if ($form1->isSubmitted() && $form1->isValid()) {
+                    $soc = $repository->find(8);
+                    // var_dump($soc);
+                    $offre->setIdSoc($soc);
+                    var_dump($offre->getIdSoc());
+
+                    $offre->setDomaine('Info');
+                    $offre->setTypeoffre('Stage');
+                    $offre->setDateajout(date('DD-MM-YY'));
+                    $offreRepository->save($offre, true);
+
+                    return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
+                }
+                {            $typeOffre=null;
+
+                    return $this->renderForm('offre/new.html.twig', [
+                        'offre' => $typeOffre,
+                        'form' => $form1,
+                        'r' => 1
+                    ]);
+                }
+            }
+
+        } else {
+            if(!$this->resultat){
+            echo 'hi';
+            return $this->renderForm('offre/new.html.twig', [
+                'offre' => $typeOffre,
+                'form' => $form1,
+            ]);
+        }
+       }
+
+        return null;
+    }
+
+    #[Route('/{id}', name: 'app_offre_show', methods: ['GET'])]
+    public function show(Offre $offre): Response
+    {
+        return $this->render('offre/show.html.twig', [
+            'offre' => $offre,
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'app_offre_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Offre $offre, OffreRepository $offreRepository): Response
+    {
+        $form = $this->createForm(OffreFreelancerType::class, $offre);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $offreRepository->save($offre, true);
+
+            return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('offre/edit.html.twig', [
+            'offre' => $offre,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}', name: 'app_offre_delete', methods: ['POST'])]
+    public function delete(Request $request, Offre $offre, OffreRepository $offreRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$offre->getId(), $request->request->get('_token'))) {
+            $offreRepository->remove($offre, true);
+        }
+
+        return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
+    }
+}

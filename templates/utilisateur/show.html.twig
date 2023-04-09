@@ -1,0 +1,126 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Utilisateur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ utilisateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ utilisateur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ utilisateur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ utilisateur.tel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ utilisateur.email }}</td>
+            </tr>
+            <tr>
+                <th>Mdp</th>
+                <td>{{ utilisateur.mdp }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ utilisateur.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ utilisateur.photo }}</td>
+            </tr>
+            <tr>
+                <th>Questionsecu</th>
+                <td>{{ utilisateur.questionsecu }}</td>
+            </tr>
+            <tr>
+                <th>Reponsesecu</th>
+                <td>{{ utilisateur.reponsesecu }}</td>
+            </tr>
+            <tr>
+                <th>Methode</th>
+                <td>{{ utilisateur.methode }}</td>
+            </tr>
+            <tr>
+                <th>Formejuridique</th>
+                <td>{{ utilisateur.formejuridique }}</td>
+            </tr>
+            <tr>
+                <th>Raisonsociale</th>
+                <td>{{ utilisateur.raisonsociale }}</td>
+            </tr>
+            <tr>
+                <th>Domaine</th>
+                <td>{{ utilisateur.domaine }}</td>
+            </tr>
+            <tr>
+                <th>Pattente</th>
+                <td>{{ utilisateur.pattente }}</td>
+            </tr>
+            <tr>
+                <th>Nomsociete</th>
+                <td>{{ utilisateur.nomsociete }}</td>
+            </tr>
+            <tr>
+                <th>Diplome</th>
+                <td>{{ utilisateur.diplome }}</td>
+            </tr>
+            <tr>
+                <th>Experience</th>
+                <td>{{ utilisateur.experience }}</td>
+            </tr>
+            <tr>
+                <th>Niveaufr</th>
+                <td>{{ utilisateur.niveaufr }}</td>
+            </tr>
+            <tr>
+                <th>Niveauang</th>
+                <td>{{ utilisateur.niveauang }}</td>
+            </tr>
+            <tr>
+                <th>Competance</th>
+                <td>{{ utilisateur.competance }}</td>
+            </tr>
+            <tr>
+                <th>Cv</th>
+                <td>{{ utilisateur.cv }}</td>
+            </tr>
+            <tr>
+                <th>Portfolio</th>
+                <td>{{ utilisateur.portfolio }}</td>
+            </tr>
+            <tr>
+                <th>Bio</th>
+                <td>{{ utilisateur.bio }}</td>
+            </tr>
+            <tr>
+                <th>Typecandidat</th>
+                <td>{{ utilisateur.typecandidat }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ utilisateur.note }}</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>{{ utilisateur.role }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_utilisateur_index') }}">back to list</a>
+
+    <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
+
+    {{ include('utilisateur/_delete_form.html.twig') }}
+{% endblock %} #}

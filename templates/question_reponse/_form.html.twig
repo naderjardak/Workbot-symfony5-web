@@ -1,0 +1,75 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+{% block pagetitle %}
+    <div class="pagetitle">
+        <h1>Question</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>Accueil</a></li>
+                <li class="breadcrumb-item active">Quiz</li>
+                <li class="breadcrumb-item active">Crée Question</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+{% endblock%}
+
+{% block body %}
+<main id="main" class="main">
+
+
+<section class="section">
+        <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 40px;">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title" style="display: flex;align-items: center;justify-content: center;font-size: 30px">Question Reponse</h6>
+
+
+                        {{ form_start(form) }}<!-- General Form Elements -->
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Question</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.question,{'attr':{'class':'form-control'}}) }}
+                        </div>
+
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Reponse Fause </label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.reponseF1,{'attr':{'class':'form-control'}}) }}
+                        </div>
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Reponse Fause </label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.reponseF2,{'attr':{'class':'form-control'}}) }}
+                        </div>
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Reponse Vrai</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.reponseV,{'attr':{'class':'form-control'}}) }}
+                        </div>
+                        </br>
+                        <div class="col-sm-10" style="display: flex;align-items: center;justify-content: center">
+                            {{ form_widget(form.Valider,{'attr':{'class':'btn btn-primary'}}) }}
+                        </div>
+
+                        {{ form_end(form) }}<!-- End General Form Elements -->
+                        <form action="{{ path('app_quiz_index') }}">
+                            <input class="btn btn-outline-dark" type="submit" value="Retour">
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
+
+

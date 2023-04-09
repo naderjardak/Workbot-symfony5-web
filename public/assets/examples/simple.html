@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Geolocation</title>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="map" style="width:100%; height: 100vh"></div>
+	<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+	<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<script src="leaflet-gps.js"></script>
+<script>
+
+	var map = new L.Map('map', {
+		zoom: 8,
+		center: new L.latLng([35.875730,10.102411]),
+	});
+	var taxiIcon = L.icon({
+			iconUrl: 'taxi.png',
+			iconSize: [30, 30]
+		})
+	
+	//var marker = L.marker([36.90061, 10.1866], { icon: taxiIcon }).addTo(map);
+
+	map.addLayer(new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));	//base layer
+
+	var gps = new L.Control.Gps({
+		autoActive:true,
+		autoCenter:false
+	});//inizialize control
+
+	var s;
+	gps
+	.on('gps:located', function(s) {
+		//	e.marker.bindPopup(e.latlng.toString()).openPopup()
+		console.log(s.latlng, map.getCenter())
+	})
+	.on('gps:disabled', function(e) {
+		e.marker.closePopup()
+	});
+
+	gps.addTo(map);
+	
+	map.on('click', function (e) {
+			var newMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+			L.Routing.control({
+				waypoints: [
+					L.latLng(36.90061, 10.1866),
+					L.latLng(e.latlng.lat, e.latlng.lng)
+				]
+			}).on('routesfound', function (e) {
+				var routes = e.routes;
+				console.log(routes);
+
+			}).addTo(map);
+		});
+
+</script>
+</body>
+</html>

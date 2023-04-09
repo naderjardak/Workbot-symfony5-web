@@ -1,0 +1,45 @@
+{% extends 'ytemplate.html.twig' %}
+
+{% block title %}New Reclamation{% endblock %}
+{% block consulter %} Comment pouvons nous vous aidez?{% endblock %}
+{% block youcef %}
+    <div style="padding: 50px">
+        <div style="margin-left: 70px">
+    <h3 class="wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Remplisser le formulaire Ci-dessous pour envoyer une réclamation:</h3>
+    <br><br>
+    {#  {{ include('reclamation/_form.html.twig') }}#}
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+    <table>
+        <tr>
+            <td>{{ form_label(form.objet) }}</td>
+            <td>{{ form_widget(form.objet) }}</td>
+            <td>{{ form_errors(form.objet) }}</td>
+        </tr>
+        <tr>
+            <td><br>{{ form_label(form.description) }}</td>
+            <td><br>{{ form_widget(form.description) }}</td>
+            <td><br>{{ form_errors(form.description) }}</td>
+        </tr>
+        <tr>
+            <td><br>{{ form_label(form.image) }}</td>
+            <td><br>{{ form_widget(form.image) }}</td>
+            <td><br>{{ form_errors(form.image) }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><br>{{ form_widget(form.envoyer) }}</td>
+            <td></td>
+        </tr>
+    </table>
+    {{ form_end(form) }}
+    <br><br>
+    <a href="{{ path('app_reclamation_index') }}">back to list</a>
+    </div>
+    </div>
+{% endblock %}
+{% block vide %}
+{% endblock %}
+{% block footertopmiddle %}
+{% endblock %}
+{% block footerright %}
+{% endblock %}

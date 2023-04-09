@@ -1,0 +1,356 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+{% block body %}
+
+{#{% for st in stage %}#}
+{#    {% set  %}#}
+{#    {% endfor %}#}
+    <!-- ======= Sidebar ======= -->
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section dashboard">
+            <div class="row">
+
+                <!-- Left side columns -->
+                <div class="col-lg-8">
+                    <div class="row">
+
+                        <!-- Sales Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
+
+
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Offres <span>| Totaux</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-calendar-check"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ nb }}</h6>
+                                            <span class="text-success small pt-1 fw-bold">{{ Yoffre }}</span> <span class="text-muted small pt-2 ps-1">Offres ont été publiées cette années</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Sales Card -->
+
+                        <!-- Revenue Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card revenue-card">
+
+
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Offres <span>| Ce mois-ci</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-calendar-month"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ month }}</h6>
+                                            {% if Pmonth>0%}
+                                            <span class="text-success small pt-1 fw-bold">{{ Pmonth |round }}%</span> <span class="text-muted small pt-2 ps-1">Plus que le mois dernier </span>
+
+                                            {% elseif Pmonth<0%}
+                                            <span class="text-danger small pt-1 fw-bold">{{ Pmonth | abs |round }}%</span> <span class="text-muted small pt-2 ps-1">Moins que le mois dernier </span>
+                                            {% elseif Pmonth == 0 %}
+                                                <span class="text-warning small pt-1 fw-bold">0</span> <span class="text-muted small pt-2 ps-1">Aucune offre le mois dernier</span>
+
+                                            {% else %}
+                                                    <span class="text-info small pt-1 fw-bold">{{ Pmonth |round }}%</span> <span class="text-muted small pt-2 ps-1">Egale au mois dernier </span>
+
+                                            {% endif%}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Revenue Card -->
+
+                        <!-- Customers Card -->
+                        <div class="col-xxl-4 col-xl-12">
+
+                            <div class="card info-card customers-card">
+
+
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Offres <span>| Cette semaine</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-calendar4-week"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{ week }}</h6>
+                                            {% if Pweek>0%}
+                                                <span class="text-success small pt-1 fw-bold">{{ Pweek |round }}%</span> <span class="text-muted small pt-2 ps-1">Plus que la dernière semaine </span>
+
+                                            {% elseif Pweek<0%}
+                                                <span class="text-danger small pt-1 fw-bold">{{ Pweek | abs |round }}%</span> <span class="text-muted small pt-2 ps-1">Moins que la dernière semaine </span>
+                                                {% elseif Pweek == 0 %}
+                                                    <span class="text-warning small pt-1 fw-bold">0</span> <span class="text-muted small pt-2 ps-1">Aucune offre la dernière semaine</span>
+
+                                                {% else %}
+                                                <span class="text-info small pt-1 fw-bold">{{ Pweek |round }}%</span> <span class="text-muted small pt-2 ps-1">Egale la dernière semaine </span>
+
+                                            {% endif%}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div><!-- End Customers Card -->
+
+                        <!-- Reports -->
+                        <div class="col-12">
+                            <div class="card">
+
+
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Reports <span>/Today</span></h5>
+
+                                    <!-- Line Chart -->
+                                    <div id="reportsChart"></div>
+
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new ApexCharts(document.querySelector("#reportsChart"), {
+                                                series: [{
+                                                    name: 'Stage',
+                                                    data: [{{ stage }}],
+                                                }, {
+                                                    name: 'Emploi',
+                                                    data: [{{ emploi }}]
+                                                }, {
+                                                    name: 'Freelancer',
+                                                    data: [{{ freelancer }}]
+                                                }],
+                                                chart: {
+                                                    height: 350,
+                                                    type: 'area',
+                                                    toolbar: {
+                                                        show: false
+                                                    },
+                                                },
+                                                markers: {
+                                                    size: 4
+                                                },
+                                                colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                                                fill: {
+                                                    type: "gradient",
+                                                    gradient: {
+                                                        shadeIntensity: 1,
+                                                        opacityFrom: 0.3,
+                                                        opacityTo: 0.4,
+                                                        stops: [0, 90, 100]
+                                                    }
+                                                },
+                                                dataLabels: {
+                                                    enabled: false
+                                                },
+                                                stroke: {
+                                                    curve: 'smooth',
+                                                    width: 2
+                                                },
+                                                xaxis: {
+                                                    type: 'month',
+                                                },
+                                                tooltip: {
+                                                    x: {
+                                                        format: 'dd/MM/yy HH:mm'
+                                                    },
+                                                }
+                                            }).render();
+                                        });
+                                    </script>
+                                    <!-- End Line Chart -->
+
+                                </div>
+
+                            </div>
+                        </div><!-- End Reports -->
+
+                        <!-- Recent Sales -->
+                        <div class="col-12">
+                            <div class="card recent-sales overflow-auto">
+
+
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Liste des offres <span>| Today</span></h5>
+                                    <div style="overflow:scroll;height:400px;">
+                                    <table class="table table-borderless datatable">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Titre</th>
+                                            <th scope="col">Société</th>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                        {% for offre in offres %}
+                                        <tr>
+                                            <th scope="row"><a href="#">{{offre.id}}</a></th>
+                                            <td><a href="#" class="text-primary">{{ offre.titre }}</a></td>
+                                            <td>{{ offre.idSoc.nom }}</td>
+                                            <td>{{ offre.typeoffre }}</td>
+                                            {% if 'now' |date('U') < offre.dateexpiration |date('U') %}
+                                            <td><span class="badge bg-success">En cours</span></td>
+                                                {% else %}
+                                                    <td><span class="badge bg-danger">Expirée</span></td>
+
+                                            {% endif %}
+                                        </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+
+                                    </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Recent Sales -->
+
+
+                    </div>
+                </div><!-- End Left side columns -->
+
+                <!-- Right side columns -->
+                <div class="col-lg-4">
+
+                    <!-- Website Traffic -->
+                    <div class="card">
+
+
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+
+                            <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    echarts.init(document.querySelector("#trafficChart")).setOption({
+                                        tooltip: {
+                                            trigger: 'item'
+                                        },
+                                        legend: {
+                                            top: '5%',
+                                            left: 'center'
+                                        },
+                                        series: [{
+                                            name: 'Access From',
+                                            type: 'pie',
+                                            radius: ['40%', '70%'],
+                                            avoidLabelOverlap: false,
+                                            label: {
+                                                show: false,
+                                                position: 'center'
+                                            },
+                                            emphasis: {
+                                                label: {
+                                                    show: true,
+                                                    fontSize: '18',
+                                                    fontWeight: 'bold'
+                                                }
+                                            },
+                                            labelLine: {
+                                                show: false
+                                            },
+                                            data: [{
+                                                value: {{ nb }},
+                                                name: 'Offres'
+                                            },
+                                                {
+                                                    value: {{ cands }},
+                                                    name: 'Candidatures'
+                                                },
+
+                                            ]
+                                        }]
+                                    });
+                                });
+                            </script>
+
+                        </div>
+                    </div><!-- End Website Traffic -->
+                    <!-- Recent Activity -->
+                    <div class="card">
+
+
+                        <div class="card-body">
+                            <h5 class="card-title">Recent Activity <span></span></h5>
+
+                            <div class="activity">
+                                {% set nb =0 %}
+
+                                {% for f in offreTri %}
+    {% if nb <6  %}
+        {% set nb =nb+1 %}
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">32 min</div>
+                                    <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                                    <div class="activity-content">
+                                        {{ f.titre }}
+                                    </div>
+                                </div><!-- End activity item-->
+    {% endif %}
+{% endfor %}
+
+
+                            </div>
+
+                        </div>
+                    </div><!-- End Recent Activity -->
+
+
+
+
+
+
+
+                </div><!-- End Right side columns -->
+
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>WorkBot 2022</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </footer><!-- End Footer -->
+{% endblock %}
+

@@ -1,0 +1,66 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+{% block body %}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Quiz</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>Accueil</a></li>
+                <li class="breadcrumb-item active">Quiz</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+<div class="col-lg-9">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Quiz :</h5>
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th colspan="3"><center>Actions</center></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quiz in quizzes %}
+            <tr>
+                <td>{{ quiz.titre }}</td>
+                <td>{{ quiz.description }}</td>
+                <td>
+                    <a href="{{ path('app_quiz_edit', {'id': quiz.id}) }}">Modifier</a>
+                </td>
+                <td>
+                    <a href="{{ path('app_question_reponse_new', {'id': quiz.id}) }}">Ajouter Question</a>
+                </td>
+                <td>
+                    <a href="{{ path('app_afficher_question', {'id': quiz.id}) }}">Afficher Questions</a>
+                </td>
+                <td>
+                    {% if quiz.nb==4 %}
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <a style="color: #00a656"  class="bi bi-check2-circle">  {{ quiz.nb }}/4</a>
+
+                        {% else %}
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <a style="color: #8c1227"  class="bi bi-x-circle">  {{ quiz.nb }}/4</a>
+                            {% endif %}
+                        </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_quiz_new') }}">Cree un nouveau</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'offre/templateoffre.html.twig' %}
+{% block addCss %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css"
+          integrity="sha256-5veQuRbWaECuYxwap/IOE/DAwNxgm4ikX7nrgsqYp88=" crossorigin="anonymous">
+{% endblock %}
+
+{% block container %}
+    <br>
+    Liste des entretiens
+{% endblock %}
+{% block section %}
+
+    <div style="width: 80%;margin: auto" id="calendar"></div>
+{% endblock %}
+        {% block javascriptTest %}
+            <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"
+                    integrity="sha256-7PzqE1MyWa/IV5vZumk1CVO6OQbaJE4ns7vmxuUP/7g=" crossorigin="anonymous"></script>
+            <script>
+                window.onload = () => {
+                    let calenderElt = document.querySelector("#calendar")
+
+                    let calender = new FullCalendar.Calendar(calenderElt, {
+                        initialView: 'dayGridMonth',
+                        local: 'fr',
+                        timeZone: 'Europe/paris',
+                        headerToolbar: {
+                            start: 'prev,next today',
+                            center: 'title',
+                            end: 'dayGridMonth,timeGridWeek'
+                        },
+                        events:{{ data | raw }},
+                        editable: true,
+                        eventResizableFromStart: true
+                    })
+
+                    calender.on('eventChange', (e) => {
+                        let url = `resize/${e.event.id}/edit`
+                        let donnes = {
+                            "title": e.event.title,
+                            'start': e.event.start,
+                            'end': e.event.end,
+
+
+                        }
+                        let xhr = new XMLHttpRequest
+                        xhr.open("PUT", url)
+                        xhr.send(JSON.stringify((donnes)))
+                        console.log(donnes)
+
+                    })
+                    calender.render()
+                }
+            </script>
+        {% endblock %}

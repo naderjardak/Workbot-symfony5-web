@@ -1,0 +1,40 @@
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+<div class="row">
+    <div class="col-lg-24">
+        <div>
+
+            <label>{{ form_label(form.lienmeet) }}</label>
+            {{ form_widget(form.lienmeet,{'attr':{'class':'form-control'}}) }}
+            <span style="color:red">    {{ form_errors(form.lienmeet) }}</span>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div >
+
+            <label>{{ form_label(form.date) }}</label>
+            {{ form_widget(form.date,{'attr':{'class':'form-control'}}) }}
+            <span style="color:red">    {{ form_errors(form.date) }}</span>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div >
+            <label>{{ form_label(form.heure) }}</label>
+            {{ form_widget(form.heure,{'attr':{'class':'form-control'}}) }}
+
+            <span style="color:red">  {{ form_errors(form.heure) }}</span>
+        </div>
+    </div>
+    <div class="col-lg-12 button">
+    <button type="submit" class="btn">{{ button_label|default('Save') }}</button></div>
+    {{ form_end(form) }}
+</div>
+
+
+
+
+
+
+
+
+

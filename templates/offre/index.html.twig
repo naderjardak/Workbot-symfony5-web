@@ -1,0 +1,195 @@
+{% extends 'offre/templateoffre.html.twig' %}
+{% block container %}
+
+    Vos offres
+
+{% endblock %}
+{% block postjob %}
+    <a href="{{ path('app_offre_show_typeOffre') }}">Create new</a>
+
+{% endblock %}
+
+{% block tableau %}
+
+
+    {#    <form action="{{ path('search') }}" class="form1"> #}
+    {#        <input type="submit" class="searchinput"> #}
+    {#    </form> #}
+    {% for label, messages in app.flashes(['success', 'update' , "delete","deleteT"]) %}
+        {% for message in messages %}
+            <div class="alert alert-success -{{ label }}">
+                <div style="text-align: center;">  {{ message | upper }}</div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% if offres is not empty %}
+
+    {% endif %}
+    <section class="find-job job-list section">
+        <div class="container">
+            <div class="single-head">
+                <div>
+                        <span style="width:83.9%">
+
+                            <select id="typeoffre3" class="form-control-sm">
+                                 <option hidden>Type d'offre</option>
+                                 <option>All</option>
+                                <option>Stage</option>
+                                <option>Emploi</option>
+                                <option>Freelancer</option>
+
+                            </select>
+
+</span>
+                    <span>
+                    <input type="text" id="search" class="form-control-sm" name="search2" placeholder="Recherche">
+                        <img src="{{ asset('assets/img/icons8-search-24.png') }}"></span></div>
+                <div class="row" id="all">
+
+                    {% for c in offres %}
+                    <div class="col-lg-6 col-12">
+
+                        <div class="single-job">
+                            <div class="job-image">
+                                <img src="{{ asset('assets/img/card.jpg') }}" height="70" width="70" alt="#">
+                            </div>
+                            <div class="job-content">
+                                <form>
+                                    <h5><a style="font-size: 30px">{{ c.titre }}</a></h5>
+                                </form>
+                                <p>Type d'offre : <u style="color: black">{{ c.typeoffre }}</u></p><br>
+                                <p>description : <u style="color: black">{{ c.description }}</u></p>
+
+                                <ul>
+
+                                    <li><i class="bx bx-yen"></i>{{ c.nbCandidature }}  </li>
+                                    <li><a href="{{ path('app_offre_cand', {'id': c.id}) }}">Candidatures</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="job-button">
+
+                                <a class="btn btn-outline-primary" href="{{ path('app_offre_show', {'id': c.id}) }}">Afficher</a>
+                                <a class="btn btn-outline-primary" href="{{ path('app_offre_edit', {'id': c.id}) }}">Modifier</a>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {% else %}
+                    <div>
+                        <center>
+
+                            <h3>Notre mission vous simplifier le travail ! Commencez par ajouter une offre </h3>
+                            <a class="btn-lg" href="{{ path('app_offre_show_typeOffre') }}">Créer une offre</a></center>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                <div id="searchDiv" class="row"></div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+{% endblock %}
+{% block javascriptTest %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#search").keyup(function (e) {
+                const value = $(this).val();
+                $.ajax({
+                    url: "{{ path('search') }}",
+                    type: 'GET',
+                    data: {
+                        'search2': value
+                    },
+                    success: function (retour) {
+                        if (retour) {
+                            $('div#searchDiv').empty();
+                            $.each(JSON.parse(retour.replace('<<','')), function (i, obj) {
+                                $('div#all').hide();
+                                $('div#searchDiv').append(' {% if 1 %}<div class="col-lg-6 col-12"> <div class="single-job"> <div class="job-image">' +
+                                    '<img src="{{ asset('assets/img/card.jpg') }}" height="70" width="70" alt="#"> </div> <div class="job-content"><form><h5><a style="font-size: 30px">' + obj.titre + '</a></h5>' +
+                                    '</form><p>Type d"offre : <u style="color: black">' + obj.typeoffre + '</u></p><br><p>description : <u style="color: black">' + obj.description + '</u></p>' +
+                                    '<ul><li><i class="bx bx-yen"></i>' + obj.nbCandidature + '  </li><li> <a  href="all/' + obj.id + '">Candidatures</a></li> </ul></div>' +
+                                    '<div class="job-button"><a class="btn btn-outline-primary" href="show/' + obj.id + '">Afficher</a>' +
+                                    '<a class="btn btn-outline-primary" href="' + obj.id + '/edit">Modifier</a> </div></div></div>{% endif %}'
+                                )
+                            });
+                        } else {
+                            $('div#all').show();
+                            $('div#searchDiv').empty();
+                            $('div#searchDiv').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#typeoffre3").change(function (e) {
+                const value = $(this).val();
+                var url = "{{ path('app_offre_typeOffreSearch',{'type':'value1'}) }}";
+                url = url.replace("value1", value);
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        'typeoffre3': value
+                    },
+                    success: function (retour) {
+                        if (retour) {
+                            $('div#searchDiv').empty();
+                            $.each(JSON.parse(retour.replace('<<','')), function (i, obj) {
+                                $('div#all').hide();
+                                $('div#searchDiv').append(' {% if 1 %}<div class="col-lg-6 col-12"> <div class="single-job"> <div class="job-image">' +
+                                    '<img src="{{ asset('assets/img/card.jpg') }}" height="70" width="70" alt="#"> </div> <div class="job-content"><form><h5><a style="font-size: 30px">' + obj.titre + '</a></h5>' +
+                                    '</form><p>Type d"offre : <u style="color: black">' + obj.typeoffre + '</u></p><br><p>description : <u style="color: black">' + obj.description + '</u></p>' +
+                                    '<ul><li><i class="bx bx-yen"></i>' + obj.nbCandidature + '  </li><li> <a  href="all/' + obj.id + '">Candidatures</a></li> </ul></div>' +
+                                    '<div class="job-button"><a class="btn btn-outline-primary" href="show/' + obj.id + '">Afficher</a>' +
+                                    '<a class="btn btn-outline-primary" href="' + obj.id + '/edit">Modifier</a> </div></div></div>{% endif %}'
+                                )
+                            });
+                        } else {
+                            $('div#all').show();
+                            $('div#searchDiv').empty();
+                            $('div#searchDiv').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+
+
+    {#    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script> #}
+    {#    <script> #}
+    {#        function onkeyupOffre(e) { #}
+    {#            e.preventDefault(); #}
+    {#            const url=this.action; #}
+    {#           // const div=document.querySelector('div.row') #}
+
+    {#            axios.get(url).then(function (response){ #}
+    {#              console.log(response.data); #}
+    {#            }) #}
+    {#        } #}
+
+    {#        document.querySelector('.form1').addEventListener('click',onkeyupOffre); #}
+    {#    </script> #}
+
+{% endblock %}
+

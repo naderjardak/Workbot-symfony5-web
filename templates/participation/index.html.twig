@@ -1,0 +1,36 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Tel</th>
+            <th>Email</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+        <tr>
+            <td>{{ us.nom }}</td>
+            <td>{{ us.prenom }}</td>
+            <td>{{ us.tel }}</td>
+            <td>{{ us.email }}</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_evennement_index') }}"><input type="submit" value="Back" class="btn btn-primary"></a>
+{% endblock %}

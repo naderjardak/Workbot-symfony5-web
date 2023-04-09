@@ -1,0 +1,22 @@
+{% extends 'utilisateur/client/base.html.twig' %}
+
+
+
+{% block body %}
+
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ participation.id }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_participation_index') }}"><input type="submit" value="Back" class="btn btn-primary"></a>
+
+    <a href="{{ path('app_participation_edit', {'id': participation.id}) }}">edit</a>
+
+    {{ include('participation/_delete_form.html.twig') }}
+{% endblock %}

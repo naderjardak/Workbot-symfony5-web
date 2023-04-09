@@ -1,0 +1,222 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+
+{% block header %}
+    <link href="{{asset('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap')}}" rel="stylesheet">
+    <link href="{{asset('assetsLogin/fonts/icomoon/style.css')}}" rel="stylesheet">
+    <link href="{{asset('assetsLogin/css/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assetsLogin/css/style.css')}}" rel="stylesheet">
+    <header class="header" style="height:84px ">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand logo" href="#">
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="active" href="http://127.0.0.1:8000/">Accueil</a>
+
+                                    </li>
+
+
+                                    <li class="nav-item"><a href="https://www.facebook.com/Job-TN-102084759380863/">Contact </a></li>
+                                </ul>
+                            </div>
+
+                            <div class="button">
+                                <a href="{{ path('app_login') }}" data-toggle="modal" class="login">Connecter</a>
+                                <a href="{{ path('app_register') }}" class="btn">S'inscrire</a>
+                            </div>
+                        </nav>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+{% endblock %}
+
+{% block sidebar %}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+{% block body %}
+    <div class="card mb-3">
+    {# #} {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+    <div class="container ">
+
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <div class="container ">
+                <div class="row justify-content ">
+
+                    <div class="col-md-7 " style="margin-top: 200px;">
+                        <img src="assetsLogin/images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="col-md-5 contents " >
+
+                        <div class="col-lg-12 col-md-8 d-flex flex-column align-items-center justify-content-center">
+
+                            <div class="d-flex justify-content-center py-4">
+                                <a href="index.html" class="logo d-flex align-items-center w-auto">
+
+                                </a>
+                            </div><!-- End Logo -->
+
+                            <div class="card mb-3">
+
+                                <div class="card-body">
+
+                                    <div class="pt-4 pb-2">
+                                        <h5 class="card-title text-center pb-0 fs-4">Créez votre compte</h5>
+                                        <p class="text-center small">Entrer vos coordonnées</p>
+                                    </div>
+
+
+                                    {#  #}
+
+                                    <div class="col-12">
+                                        <label for="yourName" class="form-label">Votre Nom</label>
+
+                                        <div class="invalid-feedback"> entre votre Nom!</div>
+                                        {{ form_widget(form.nom,{'attr':{'class':'form-control'}}) }}
+                                        <p class="text-danger">{{ form_errors(form.nom,{'attr':{'class':'form-control'}}) }}</p>
+                                        <div class="col-12">
+                                            <label for="yourName" class="form-label">Votre Prenom</label>
+
+                                            <div class="invalid-feedback">entre votre Prenom!</div>
+                                            {{ form_widget(form.prenom,{'attr':{'class':'form-control'}}) }}
+                                            {{ form_errors(form.prenom,{'attr':{'class':'form-control'}}) }}
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                    <div class="col-12">
+                                        <label for="yourEmail" class="form-label">Votre Email</label>
+                                        {{ form_widget(form.email,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.email,{'attr':{'class':'form-control'}}) }}
+                                        <div class="invalid-feedback">entre votre Email !</div>
+
+                                    </div>
+
+
+
+                                    <div class="col-12">
+                                        <label for="yourPassword" class="form-label">Mot passe</label>
+                                        {{ form_widget(form.password,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.password,{'attr':{'class':'form-control'}}) }}
+                                        <div class="invalid-feedback">entre votre Email Mot passe!</div>
+                                    </div>
+
+
+
+                                    <div class="col-12">
+                                        <label for="yourName" class="form-label">Question de sécurite</label>
+
+                                        <div class="invalid-feedback">entre votre Question de sécurite</div>
+                                        <div class="form-select">
+                                            {{ form_widget(form.questionSecu,{'attr':{'class':'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourName" class="form-label">Reponse de sécurite</label>
+
+                                        <div class="invalid-feedback">entre votre Reponse de sécurite</div>
+                                        {{ form_widget(form.reponseSecu,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.reponseSecu,{'attr':{'class':'form-control'}}) }}
+
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourName" class="form-label">Domaine</label>
+
+                                        <div class="invalid-feedback">entre votre Domaine</div>
+                                        {{ form_widget(form.domaine,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.domaine,{'attr':{'class':'form-control'}}) }}
+                                    </div>
+
+
+                                    <label>role</label>
+                                    <div class="dropdown show ">
+                                        <div class="invalid-feedback justify-content-center form-check form-check-inline">entre role</div>
+                                        {{ form_widget(form.roles,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.roles,{'attr':{'class':'form-control'}}) }}
+                                    </div>
+
+
+                                    <div class="col-12">
+                                        <label for="yourName" class="form-label">Adresse</label>
+
+                                        <div class="invalid-feedback">entre votre Adresse</div>
+                                        {{ form_widget(form.adresse,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_errors(form.adresse,{'attr':{'class':'form-control'}}) }}
+
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="yourName" class="form-label">numero télephone</label>
+
+                                        <div class="invalid-feedback">entre votre numéro</div>
+                                        {{ form_widget(form.tel,{'attr':{'class':'form-control'}}) }}
+                                        <p class="text-danger">       {{ form_errors(form.tel,{'attr':{'class':'form-control'}}) }}</p>
+
+                                    </div>
+
+
+
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required="">
+                                            <label class="form-check-label" for="acceptTerms">Accepter <a href="#">les termes et conditions</a></label>
+                                            <div class="invalid-feedback">Il faut accepter les conditions.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit">S'inscrire</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="small mb-0">Vous avez deja un compte? <a href="{{ path('app_login') }}">Connecter</a></p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="credits">
+                                <!-- All the links in the footer should remain intact. -->
+                                <!-- You can delete the links only if you purchased the pro version. -->
+                                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+                                ©2022<a href="#">WorkBot</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

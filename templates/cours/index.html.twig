@@ -1,0 +1,211 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+
+
+{% block body %}
+    <main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Cours</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>Accueil</a></li>
+                <li class="breadcrumb-item active">Cours</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+<section class="section dashboard">
+        <div class="row">
+
+            <div class="col-lg-8">
+                <div class="row">
+
+                    <!-- Sales Card -->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card sales-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Cours <span>|Totale</span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-book-half"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h5>Nombre :</h5>
+                                        <span class="text-success small pt-1 fw-bold">{{ co }}</span> <span class="text-muted small pt-2 ps-1">COURS</span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Sales Card -->
+
+                    <!-- Revenue Card -->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card revenue-card">
+
+
+                            <div class="card-body">
+                                <h5 class="card-title">Certification <span>| Totale</span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-award-fill"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h5>Nombre :</h5>
+                                        <span class="text-success small pt-1 fw-bold">{{ ce }}</span> <span class="text-muted small pt-2 ps-1">CERTIFICAT</span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Revenue Card -->
+
+                    <!-- Customers Card -->
+                    <div class="col-xxl-4 col-xl-12">
+
+                        <div class="card info-card customers-card">
+
+
+
+                            <div class="card-body">
+                                <h5 class="card-title">Quiz <span>| Totale</span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h5>Nombre :</h5>
+                                        <span class="text-danger small pt-1 fw-bold">{{ q }}</span> <span class="text-muted small pt-2 ps-1">QUIZ</span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div><!-- End Customers Card -->
+
+                </div>
+
+
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <h5 class="card-title">Cours <span>|Tout</span></h5>
+                        <HR>
+                        <table id="myTable" class="table" >
+                            <thead>
+                            <tr>
+                                <th scope="col" style="width: 10%;">Titre</th>
+                                <th scope="col" style="width: 10%;">Domaine</th>
+                                <th scope="col" style="width: 10%;">Chemin</th>
+                                <th scope="col" style="width: 10%;">actions</th>
+                            </tr>
+                            <HR>
+                            </thead>
+                            <tbody>
+                            {% for cour in cours %}
+
+                                <tr>
+                                    <th><a src={{ cour.chemin }}>{{ cour.titre }}</a></th>
+                                    <td >{{ cour.domaine }}</td>
+                                    <td ><span class="badge bg-success" >{{ cour.chemin }}</span></td>
+                                    <td>
+
+                                        <a href="{{ path('app_cours_show', {'id': cour.id}) }}" style="font-size: small"><i class="ri-error-warning-line" ></i>Info </a>
+
+                                        <a href="{{ path('app_cours_edit', {'id': cour.id}) }}" style="margin-left:1px;font-size: small"><i class="bx bxs-edit-alt"></i>Modif</a>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <HR>
+                        <HR>
+
+                        <a href="{{ path('app_cours_new') }}"><i class="ri-add-circle-line" style="size: 30px"></i>Ajouter un cours</a>
+                        <HR>
+                        <HR>
+                        <a href="{{ path('pdf_cours') }}" class="btn btn-info">Telecharger PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript" src="{{ asset('/media/js/jquery.js')}}"></script>
+            <script type="text/javascript" src="{{ asset('/media/js/jquery.dataTables.min.js')}}"></script>
+            <link rel="stylesheet" type="text/css" href="{{ asset('/media/css/jquery.dataTables.min.css')}}">
+
+            <script>
+                $(document).ready(function(){
+                    $('#myTable').dataTable({
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.13.1/i18n/fr-FR.json"
+                        }
+                    })
+                });
+            </script>
+            <div class="col-lg-4">
+                <div class="card">
+
+                    <div class="card-body pb-0">
+                        <h5 class="card-title">Cours Statistique <span>| Domaine</span></h5>
+
+                        <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                echarts.init(document.querySelector("#trafficChart")).setOption({
+                                    tooltip: {
+                                        trigger: 'item'
+                                    },
+                                    legend: {
+                                        top: '5%',
+                                        left: 'center'
+                                    },
+                                    series: [{
+                                        name: 'Domaine du cours',
+                                        type: 'pie',
+                                        radius: ['40%', '70%'],
+                                        avoidLabelOverlap: false,
+                                        label: {
+                                            show: false,
+                                            position: 'center'
+                                        },
+                                        emphasis: {
+                                            label: {
+                                                show: true,
+                                                fontSize: '18',
+                                                fontWeight: 'bold'
+                                            }
+                                        },
+                                        labelLine: {
+                                            show: false
+                                        },
+                                        data: [
+                                            {% for s in stat %}
+                                            {
+                                                value: {{ s.nb }},
+                                                name: '{{ s.domaine }}'
+                                            },
+                                            {% endfor %}
+                                        ]
+                                    }]
+                                });
+                            });
+                        </script>
+
+                    </div>
+                </div>
+
+                <!-- End Website Traffic -->
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'offre/templateoffre.html.twig' %}
+{% block section %}
+
+<section class="job-post section">
+    {% for label, messages in app.flashes([ "warning","unique"]) %}
+        {% for message in messages %}
+            <div class="alert alert-warning -{{ label }}">
+                <div style="text-align: center;"> {{ message | upper}}</div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% endblock %}
+    {% block container %}       <br>
+
+        Créer une offre {% endblock %}
+
+    {% block retour %}
+{% endblock %}
+
+{% block body %}
+
+    {{ include('offre/_form.html.twig') }}
+
+{% endblock %}
+
+
+
+   {% block btn %}
+       <button type="submit" class="btn">{{ button_label|default('Ajouter') }}</button>
+       {{ form_end(form) }}
+   {% endblock %}
+{% block test %}
+
+    <div id="test" data-prototype="{{ form_row(form.test.vars.prototype) | e('html_attr') }}">
+        {{ form_widget(form.test) }}
+
+
+        <span class="btn-light">
+
+    </span>
+    </div>
+
+    <br>
+
+{% endblock %}
+{% block javascriptTest %}
+    <script>
+        let collection, btnAjout, span;
+        window.onload = () => {
+            collection = document.querySelector("#test");
+            span = collection.querySelector("span");
+            btnAjout = document.createElement("button");
+            btnAjout.className = "btn-secondary";
+            btnAjout.innerText = "Ajouter un test";
+
+            let nouvBtn = span.append(btnAjout);
+
+            collection.dataset.index = collection.querySelectorAll("input").length;
+
+            btnAjout.addEventListener("click", function (e) {
+                e.preventDefault();
+                addButton(collection, nouvBtn);
+            });
+
+        }
+
+        function addButton(collection, nouvBtn) {
+            let prototype = collection.dataset.prototype;
+
+            let index = collection.dataset.index;
+
+            prototype = prototype.replace(/__name__/g, index);
+
+            let content = document.createElement("html");
+            content.innerHTML = prototype;
+            let newform = content.querySelector("div");
+
+            let btnSupp = document.createElement("button");
+            btnSupp.type = "button";
+            btnSupp.className = "btn-red";
+            btnSupp.id = "delete_test-" + index;
+            btnSupp.innerText = "Supprimer le test";
+            newform.append(btnSupp);
+
+            collection.dataset.index++;
+
+            let btnAjout = collection.querySelector(".btn-secondary");
+            span.insertBefore(newform, btnAjout);
+
+            btnSupp.addEventListener("click", function () {
+                this.previousElementSibling.parentElement.remove()
+            })
+
+        }
+
+
+    </script>
+{% endblock %}

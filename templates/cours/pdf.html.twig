@@ -1,0 +1,32 @@
+{% block body %}
+
+<div class="card">
+    <div class="card-body">
+
+        <h5 class="card-title">Cours <span>|Tout</span></h5>
+        <HR>
+        <table id="myTable" class="table table-striped" style="margin-left: 100px;border: black;border-width: 4px" >
+            <thead>
+            <tr>
+                <th scope="col" style="width: 50%;">Titre</th>
+                <th scope="col" style="width: 50%;">Domaine</th>
+                <th scope="col" style="width: 50%;">Chemin</th>
+            </tr>
+            <HR>
+            </thead>
+            <tbody>
+            {% for cour in cours %}
+
+            <tr>
+                <td>{{ cour.titre }}</td>
+                <td >{{ cour.domaine }}</td>
+                <td ><span class="badge bg-success" >{{ cour.chemin }}</span></td>
+
+            </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

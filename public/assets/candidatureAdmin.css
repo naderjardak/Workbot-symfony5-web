@@ -1,0 +1,209 @@
+.leaderboard {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 12px;
+}
+.leaderboard header {
+    --start: 15%;
+    height: 130px;
+    background: #2f4050;
+    color: #fff;
+    position: relative;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+.leaderboard header .leaderboard__title {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: calc(var(--start) * .75);
+    transform: translateY(-50%);
+    text-transform: uppercase;
+    margin: 0;
+}
+.leaderboard header .leaderboard__title span {
+    display: block;
+}
+.leaderboard header .leaderboard__title--top {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 6.5px;
+}
+.leaderboard header .leaderboard__title--bottom {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 3.55px;
+    opacity: 0.65;
+    transform: translateY(-2px);
+}
+.leaderboard header .leaderboard__icon {
+    fill: #fff;
+    opacity: 0.35;
+    width: 50px;
+    position: absolute;
+    top: 50%;
+    left: var(--start);
+    transform: translate(-50%, -50%);
+}
+.leaderboard__profiles {
+    background-color: #fff;
+    border-radius: 0 0 12px 12px;
+    padding: 15px 15px 20px;
+    display: list-item;
+    row-gap: 8px;
+    height: 100%;
+}
+.teamName{
+
+    box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+    padding: 10px;
+    text-align: center;
+    color: black;
+    background: white;
+    border: 1px solid lightgrey;
+    border-radius: 20px;
+    font-size: 15px;
+}
+.leaderboard__profile {
+    grid-template-columns: 1fr 3fr 1fr;
+    display: flex;
+    align-items: center;
+    width: 95%;
+    min-height: 120px;
+    max-height: 600px;
+    margin: 10px;
+    padding: 10px 30px 10px 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98), box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+    background-color: #fff;
+}
+.leaderboard__profile:hover {
+    transform: scale(1.1);
+    box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
+}
+.leaderboard__picture {
+    max-width: 100%;
+    width: 60px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #ebeef3, 0 0 0 11px #f3f4f6;
+}
+.leaderboard__name {
+    color: black;
+    word-break: break-word;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.64px;
+    margin-left: 12px;
+}
+.dateJoined{
+    word-break: break-word;
+    font-size: 12px;
+}
+.info {
+    word-break: break-word;
+    margin-left: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+.email{
+    word-break: break-word;
+    color: #979cb0;
+    font-size: 13px;
+}
+.scrum{
+    cursor: pointer;
+    font-size: 12px;
+    float: right;
+    word-break: break-word;
+    color: #35d8ac;
+}
+.scrum:hover{
+    transform: scale(1.1);
+}
+.leaderboard__value {
+    color: #35d8ac;
+    font-weight: 700;
+    font-size: 34px;
+    text-align: right;
+}
+.leaderboard__value .gt.span {
+    opacity: 0.8;
+    font-weight: 600;
+    font-size: 13px;
+    margin-left: 3px;
+}
+body {
+    margin: 0;
+    background-color: #eaeaea;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    font-family: sans-serif;
+}
+.leaderboard {
+    box-shadow: 0 0 40px -10px rgba(0, 0, 0, .4);
+}
+
+.shadowed{
+    filter: blur(8px);
+    pointer-events: none;
+    -webkit-filter: blur(8px);
+}
+
+.container {
+    background-color: #fff;
+    position: absolute;
+    left: 43%;
+    top: 105px;
+    width: 740px;
+    height: fit-content;
+    z-index: 999999999;
+    padding: 40px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    place-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.185);
+}
+.select{
+    width: 100%;
+    height: 52px !important;
+    border-radius: 10px;
+}
+.container-text h2 {
+    font-size: 1.2rem;
+    color: #1a2250;
+}
+.container-text p {
+    font-size: 14px;
+    color: #3b4169;
+    margin: 10px 0;
+}
+.container-text input, .container-text button {
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 3px;
+}
+.container-text input {
+    border-radius: 10px;
+    width: 100%;
+    border: 2px solid #daddec;
+    margin: 5px 0 10px;
+    font-size: 1rem;
+    color: #656880;
+}
+.container-text button {
+    cursor: pointer;
+    margin-top: 20px;
+}
+.searchDiv{
+    margin-top: 20%;
+    margin-left: 25px;
+    width: 60%;
+
+}

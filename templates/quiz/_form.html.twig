@@ -1,0 +1,67 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+{% block body %}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Quiz</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a>Accueil</a></li>
+                <li class="breadcrumb-item active">Quiz</li>
+                <li class="breadcrumb-item active">Crée</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title" style="display: flex;align-items: center;justify-content: center;font-size: 30px">Question Reponse</h6>
+
+
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Titre</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.titre,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.titre) }}
+                        </div>
+
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Description </label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.description,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.description) }}
+                        </div>
+
+                        </br>
+                        <div class="col-sm-10" style="display: flex;align-items: center;justify-content: center">
+                            {{ form_widget(form.Valider,{'attr':{'class':'btn btn-primary'}}) }}
+                        </div>
+
+
+
+
+                        {{ form_end(form) }}<!-- End General Form Elements -->
+                        <div class="col-sm-10" style="display: flex;align-items: center;justify-content: left">
+                            <button onClick="window.history.back();" class="btn btn-outline-dark">Go back</button>
+                        </div>
+                        <br>
+                        <a href="{{ path('app_quiz_index') }}">back to list</a>
+                    <br>
+                    </div>
+                </div>
+
+            </div>
+
+
+    </section>
+{% endblock %}
+
+
+
+{#
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+#}

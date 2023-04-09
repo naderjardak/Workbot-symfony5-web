@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entretien{% endblock %}
+
+{% block body %}
+    <h1>Entretien</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entretien.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ entretien.date }}</td>
+            </tr>
+            <tr>
+                <th>Lienmeet</th>
+                <td>{{ entretien.lienmeet }}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{{ entretien.heure }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_entretien_index') }}">Retour</a>
+
+    <a href="{{ path('app_entretien_edit', {'id': entretien.id}) }}">edit</a>
+
+    {{ include('entretien/_delete_form.html.twig') }}
+    {% block classJobinfo %}{% endblock %}">
+    {% block jobinformation %}{% endblock %}
+{% endblock %}

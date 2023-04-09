@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  width: 80%;
+  border-radius: 30px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: #8D87F0;
+}
+
+#mapid {
+  margin-top: 50px;
+  margin: 50px auto;
+  border-radius: 50px;
+}

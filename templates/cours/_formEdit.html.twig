@@ -1,0 +1,117 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+
+
+{% block body %}
+    <section class="section">
+        <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 20px;">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title" style="display: flex;align-items: center;justify-content: center;font-size: 30px">Cours</h6>
+
+
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                        <div class="col-sm-10">
+                        <label for="inputText" class="col-sm-4 col-form-label">Titre</label>
+
+                            {{ form_widget(form.titre,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.titre) }}
+
+                        </div>
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Matiere</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.matiere,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.matiere) }}
+
+                        </div>
+
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Domaine </label>
+
+                        <div class="col-xxl-4 col-sm-4" style="margin-left: 30px">
+                            {% block choice_widget %}
+                                {% for child in form.domaine %}
+                                    <div class="currency-label">
+                                        {{- form_widget(child) -}}
+                                        {{- form_label(child, null) -}}
+                                    </div>
+                                {% endfor %}
+                            {% endblock choice_widget %}
+
+
+
+                            {# {{ form_widget(form.domaine,{'attr':{'class':'form-control'}}) }}#}
+                        </div>
+
+
+                        <label for="inputText" class="col-sm-4 col-form-label">Categorie </label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.categorie,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+
+                        <label for="inputText" class="col-sm-4 col-form-label">chemin</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.chemin,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.chemin) }}
+
+                        </div>
+                        <label for="inputText" class="col-sm-4 col-form-label">Logo</label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.logo,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.logo) }}
+                        </div>
+                        </br>
+                        <div class="col-sm-10" style="display: flex;align-items: center;justify-content: center">
+                           <table>
+                               <tr>
+                                   <td>
+                                       {{ form_widget(form.Valider,{'attr':{'class':'btn btn-success'}}) }}
+
+                                   </td>
+                                   <td>
+
+                                   </td>
+                                   <td>
+                                       {{ form_end(form) }}<!-- End General Form Elements -->
+                                       <form  method="post" action="{{ path('app_cours_delete', {'id': cour.id}) }}" onsubmit="return confirm('Confirmer la supression ?');">
+                                           <input   type="hidden" name="_token" value="{{ csrf_token('delete' ~ cour.id) }}">
+                                           <button  class="btn btn-danger">Supprimer</button>
+
+                                       </form>
+                                   </td>
+                               </tr>
+                           </table>
+                        </div>
+                        <br>
+
+
+                        </div>
+                        <br>
+                        <div class="col-sm-10" style="display: flex;align-items: center;justify-content: left;margin-left: 20px;margin-bottom: 20px">
+                            <button onClick="window.history.back();" class="btn btn-outline-dark">Go back</button>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{#
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+#}

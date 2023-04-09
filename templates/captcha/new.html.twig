@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Captcha{% endblock %}
+
+{% block body %}
+    <h1>Create new Captcha</h1>
+
+    {{ include('captcha/_form.html.twig') }}
+
+    <a href="{{ path('app_captcha_index') }}">back to list</a>
+{% endblock %}

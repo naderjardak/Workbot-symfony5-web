@@ -1,0 +1,14 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+{% block title %}New Contrat{% endblock %}
+
+{% block body %}
+
+<div  style="margin-left:350px;width: 50%;margin-top: 40px">
+    <h1>Create new Contrat for candidat <b>{{ contrat.idcandidature.idcondidat.nom }} {{ contrat.idcandidature.idcondidat.prenom }}</b></h1>
+    {{ include('contrat/_form.html.twig') }}
+
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,16 @@
+{% extends 'utilisateur/Dashbord/baseAmeni.html.twig' %}
+
+{% block title %}Edit Contrat{% endblock %}
+
+{% block body %}
+
+<div  style="margin-left:350px;width: 50%;margin-top: 40px">
+    <h1>Edit Contrat</h1>
+
+    {{ include('contrat/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_contrat_admin') }}">back to list</a>
+
+    {{ include('contrat/_delete_form.html.twig') }}
+</div>
+{% endblock %}

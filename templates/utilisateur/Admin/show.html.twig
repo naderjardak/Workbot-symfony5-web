@@ -1,0 +1,317 @@
+{% extends 'utilisateur/Dashbord/base.html.twig' %}
+
+{% block body %}
+    <div class="card mb-3">
+    <div class="card-body" style="margin-left: 350px;margin-top: 80px">
+        <h5 class="card-title">Team</h5>
+
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Team</a></li>
+            </ol>
+        </nav>
+    </div>
+<div class="row" style="display: flex;align-items: center; justify-content: end;">
+    <div class="col-lg-9">
+        <div class="col-11">
+           <div class="card">
+                 <div class="card-body">
+            <h5 class="card-title">Liste des administrateurs</h5>
+
+            <!-- Default Table -->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Img</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for f in utilisateurs %}
+                    <tr>
+                        <td>{{f.nom}}</td>
+                        <td>{{f.prenom}}</td>
+                        <td>{{f.email}}</td>
+
+                        <td>
+                    <button class="bg-primary-light"><a href="{{ path('app_utilisateur_edit_admin', {'id': f.id}) }}">edit</a></button>
+                        </td>
+                        <td>
+                    <button class="bg-danger-light"><a href="{{path('delete', {'id': f.id}) }}"method="post" >delete</a></button>
+                        </td>
+
+                        <td>
+                    {#
+                            {% if f.photo | length() > 20 %}
+
+                                <img src="{{ asset($Utilisateur->photoGoogleFb.url() }}">
+                            <img src=" {{ asset(f.photoGoogleFb.url) }} "/>
+                            {% endif %}
+
+                            {% else %}
+                    #}
+                            <img src ="{{ asset('upload/ads/' ~ f.photo) }}"
+                                 alt="" style="width: 40px;height: 30px" class="rounded-circle justify-content-center"></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path('app_utilisateur_new_Admin') }}">Create new</a>
+            <!-- End Default Table Example -->
+                     <span class="js_likes"></span>
+           </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<!--
+<div class="row" style="display: flex;align-items: center; justify-content: center;">
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-md-9 col-lg-7 col-xl-5">
+                    {% for f in utilisateurs %}
+                        <table>
+                            <tr>
+                                <td>
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-4">
+                            <div class="d-flex text-black">
+                                <div class="flex-shrink-0">
+                                    <img src ="{{ asset('upload/ads/' ~ f.photo) }}"
+                                         alt="" class="img-fluid"
+                                         style="width: 180px; border-radius: 10px;">
+                                </div>
+
+                                <div class="flex-grow-1 ms-3">
+                                    <h5 class="mb-1">{{ f.nom }} {{ f.prenomS }}</h5>
+                                    <p class="mb-2 pb-1" style="color: #2b2a2a;">{{ f.email }}</p>
+                                    <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
+                                         style="background-color: #efefef;">
+                                        <div>
+                                            <p class="small text-muted mb-1">Articles</p>
+                                            <p class="mb-0">41</p>
+                                        </div>
+                                        <div class="px-3">
+                                            <p class="small text-muted mb-1">Followers</p>
+                                            <p class="mb-0">976</p>
+                                        </div>
+                                        <div>
+                                            <p class="small text-muted mb-1">Rating</p>
+                                            <p class="mb-0">8.5</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex pt-1">
+                                        <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">Chat</button>
+                                        <button type="button" class="btn btn-primary flex-grow-1">Follow</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+-->
+
+
+
+
+
+
+
+<style>
+    body{margin-top:20px;
+        background:#eee;
+    }
+    .single_advisor_profile {
+        position: relative;
+        margin-bottom: 50px;
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        z-index: 1;
+        border-radius: 15px;
+        -webkit-box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
+        box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
+    }
+    .single_advisor_profile .advisor_thumb {
+        position: relative;
+        z-index: 1;
+        border-radius: 15px 15px 0 0;
+        margin: 0 auto;
+        padding: 30px 30px 0 30px;
+        background-color: #3f43fd;
+        overflow: hidden;
+    }
+    .single_advisor_profile .advisor_thumb::after {
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        position: absolute;
+        width: 150%;
+        height: 80px;
+        bottom: -45px;
+        left: -25%;
+        content: "";
+        background-color: #ffffff;
+        -webkit-transform: rotate(-15deg);
+        transform: rotate(-15deg);
+    }
+    @media only screen and (max-width: 575px) {
+        .single_advisor_profile .advisor_thumb::after {
+            height: 160px;
+            bottom: -90px;
+        }
+    }
+    .single_advisor_profile .advisor_thumb .social-info {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        bottom: 0;
+        right: 30px;
+        text-align: right;
+    }
+    .single_advisor_profile .advisor_thumb .social-info a {
+        font-size: 14px;
+        color: #020710;
+        padding: 0 5px;
+    }
+    .single_advisor_profile .advisor_thumb .social-info a:hover,
+    .single_advisor_profile .advisor_thumb .social-info a:focus {
+        color: #3f43fd;
+    }
+    .single_advisor_profile .advisor_thumb .social-info a:last-child {
+        padding-right: 0;
+    }
+    .single_advisor_profile .single_advisor_details_info {
+        position: relative;
+        z-index: 1;
+        padding: 30px;
+        text-align: right;
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        border-radius: 0 0 15px 15px;
+        background-color: #ffffff;
+    }
+    .single_advisor_profile .single_advisor_details_info::after {
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        position: absolute;
+        z-index: 1;
+        width: 50px;
+        height: 3px;
+        background-color: #3f43fd;
+        content: "";
+        top: 12px;
+        right: 30px;
+    }
+    .single_advisor_profile .single_advisor_details_info h6 {
+        margin-bottom: 0.25rem;
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+        .single_advisor_profile .single_advisor_details_info h6 {
+            font-size: 14px;
+        }
+    }
+    .single_advisor_profile .single_advisor_details_info p {
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+        .single_advisor_profile .single_advisor_details_info p {
+            font-size: 12px;
+        }
+    }
+    .single_advisor_profile:hover .advisor_thumb::after,
+    .single_advisor_profile:focus .advisor_thumb::after {
+        background-color: #070a57;
+    }
+    .single_advisor_profile:hover .advisor_thumb .social-info a,
+    .single_advisor_profile:focus .advisor_thumb .social-info a {
+        color: #ffffff;
+    }
+    .single_advisor_profile:hover .advisor_thumb .social-info a:hover,
+    .single_advisor_profile:hover .advisor_thumb .social-info a:focus,
+    .single_advisor_profile:focus .advisor_thumb .social-info a:hover,
+    .single_advisor_profile:focus .advisor_thumb .social-info a:focus {
+        color: #ffffff;
+    }
+    .single_advisor_profile:hover .single_advisor_details_info,
+    .single_advisor_profile:focus .single_advisor_details_info {
+        background-color: #070a57;
+    }
+    .single_advisor_profile:hover .single_advisor_details_info::after,
+    .single_advisor_profile:focus .single_advisor_details_info::after {
+        background-color: #ffffff;
+    }
+    .single_advisor_profile:hover .single_advisor_details_info h6,
+    .single_advisor_profile:focus .single_advisor_details_info h6 {
+        color: #ffffff;
+    }
+    .single_advisor_profile:hover .single_advisor_details_info p,
+    .single_advisor_profile:focus .single_advisor_details_info p {
+        color: #ffffff;
+    }
+</style>
+
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <div class="container">
+        <div class="row justify-content-center" style="margin-left: 140px">
+            <div class="col-12 col-sm-8 col-lg-6">
+                <!-- Section Heading-->
+                <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <h3>Our Creative <span> Team</span></h3>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end col-lg-12  "style="margin-left: 120px">
+            <!-- Single Advisor-->
+            {% for f in utilisateurs %}
+
+            <div class="col-10 col-sm-3 col-lg-3 " >
+                <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <!-- Team Thumb-->
+                    <div class="advisor_thumb"><img src ="{{ asset('upload/ads/' ~ f.photo) }} " style="width: 180px; height: 250px;">
+                        <!-- Social Info-->
+                        <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+                    </div>
+                    <!-- Team Details-->
+                    <div class="single_advisor_details_info">
+                        <h6>{{ f.nom }} {{ f.prenom }}</h6>
+                        <p class="designation">{{f.email}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}

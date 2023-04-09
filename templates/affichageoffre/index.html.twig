@@ -1,0 +1,66 @@
+{% extends 'candidature/index.html.twig' %}
+
+{% block title %}Offre index{% endblock %}
+
+{% block body %}
+
+
+    <section class="find-job job-list section">
+        <div class="container">
+            <div class="single-head">
+                <div>
+                        <span style="width:83.9%">
+
+
+</span>
+                    <span>
+                <div class="row" id="all">
+
+                    {% for c in offres %}
+                    <div class="col-lg-6 col-12">
+
+                        <div class="single-job">
+                            <div class="job-image">
+                                <img src="{{ asset('assets/img/card.jpg') }}" height="70" width="70" alt="#">
+                            </div>
+                            <div class="job-content">
+                                <form>
+                                    <h5><a style="font-size: 30px">{{ c.titre }}</a></h5>
+                                </form>
+                                <p>Type d'offre : <u style="color: black">{{ c.typeoffre }}</u></p><br>
+                                <p>description : <u style="color: black">{{ c.description }}</u></p>
+
+
+
+                            </div>
+                            <div class="job-button">
+
+                                                    <a class="btn btn-outline-primary" href="{{ path('entrer', {'id': c.id}) }}">Afficher</a>
+                                                    <a class="btn btn-outline-danger" href="{{ path('app_reclamation_newRO',{'id': c.id}) }}">Reclamer</a>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {% else %}
+                    <div>
+                        <center>
+
+                            <h3>Notre mission vous simplifier le travail ! Commencez par ajouter une offre </h3>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                <div id="searchDiv" class="row"></div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+{% endblock %}

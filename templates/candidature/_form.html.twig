@@ -1,0 +1,33 @@
+
+
+
+
+
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="row">
+        <div class="col">{{ form_row(form.domaine,{'attr':{'class':'form-control'}}) }}</div>
+        <div class="col">{{ form_row(form.diplome,{'attr':{'class':'form-control'}}) }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col">{{ form_row(form.niveaufrancais) }}</div>
+        <div class="col">{{ form_row(form.niveauanglais) }}</div>
+    </div>
+
+<div class="row">
+    <div class="col">{{ form_row(form.experience,{'attr':{'class':'form-control'}}) }}</div>
+    <div class="col">{{ form_row(form.cv,{'attr':{'class':'form-control'}}) }}</div>
+</div>
+<div class="row">
+    <div class="col">{{ form_row(form.typecondidature,{'attr':{'class':'form-control'}}) }}</div>
+    <div class="col">{{ form_row(form.lettremotivation,{'attr':{'class':'form-control'}}) }}</div>
+</div>
+<div class="row">
+    <div class="col">{{ form_row(form.notetest,{'attr':{'class':'form-control'}}) }}</div>
+    <div class="col">{{ form_row(form.statut,{'attr':{'class':'form-control'}}) }}</div>
+</div>
+    {{ form_rest(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+

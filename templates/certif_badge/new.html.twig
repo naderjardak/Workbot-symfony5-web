@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CertifBadge{% endblock %}
+
+{% block body %}
+    <h1>Create new CertifBadge</h1>
+
+    {{ include('certif_badge/_form.html.twig') }}
+
+    <a href="{{ path('app_certif_badge_index') }}">back to list</a>
+{% endblock %}

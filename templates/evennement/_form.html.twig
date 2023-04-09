@@ -1,0 +1,89 @@
+
+
+{% block body %}
+    <section class="section">
+        <div style="display: flex;align-items: center;justify-content:right">
+            <div class="col-lg-6">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">compléter les champs</h5>
+
+                            <!-- General Form Elements -->
+                            {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+
+                            <label for="inputText" class="col-sm-4 col-form-label">Date debut</label>
+                            <div class="col-sm-10">
+                                {{ form_widget(form.datedebut,{'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.datedebut,{'attr':{'class':'form-control'}}) }}
+                            </div>
+
+
+                            <label for="inputText" class="col-sm-4 col-form-label">date fin</label>
+                            <div class="col-sm-10">
+                                {{ form_widget(form.datefin,{'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.datefin,{'attr':{'class':'form-control'}}) }}
+                            </div>
+
+                            <label for="inputText" class="col-sm-4 col-form-label">libelle</label>
+                            <div class="col-sm-10">
+                                {{ form_widget(form.libelle,{'attr':{'class':'form-control','placeholder':'Taper le libelle'}}) }}
+                                {{ form_errors(form.libelle,{'attr':{'class':'form-control','placeholder':'Taper le libelle'}}) }}
+                            </div>
+
+                            <label for="inputText" class="col-sm-4 col-form-label">heure debut</label>
+                            <div class="col-sm-10">
+                                {{ form_widget(form.heuredebut,{'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.heuredebut,{'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <label for="inputText" class="col-sm-4 col-form-label">heure fin</label>
+                            <div class="col-sm-10">
+                                {{ form_widget(form.heurefin,{'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.heurefin,{'attr':{'class':'form-control'}}) }}
+                            </div>
+
+
+                            <label for="inputText" class="col-sm-4 col-form-label">Nb des places</label>
+                            <div class="col-sm-10">
+                                {{ form_widget(form.nbplaces,{'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.nbplaces,{'attr':{'class':'form-control'}}) }}
+                            </div>
+
+                            <label for="inputText" class="col-sm-4 col-form-label">prix</label>
+                            <div class="col-sm-10">
+                                {{ form_widget(form.prix,{'attr':{'class':'form-control','placeholder':'Taper le prix'}}) }}
+                                {{ form_errors(form.prix,{'attr':{'class':'form-control','placeholder':'Taper le prix'}}) }}
+                            </div>
+                            <br>
+                            <label for="inputText" class="col-sm-4 col-form-label">Flyer</label>
+                            <div class="col-sm-10">
+                                {{ form_widget(form.flyer,{'attr':{'class':'form-control'}}) }}
+
+                            </div>
+
+                            </br>
+                            <label for="inputText" class="col-sm-4 col-form-label">Video</label>
+                            <div class="col-sm-10">
+                                {{ form_widget(form.video,{'attr':{'class':'form-control'}}) }}
+
+                            </div>
+
+
+                            </br>
+                            <div class="col-sm-10" style="display: flex;align-items: center;justify-content: center">
+                                {{ form_widget(form.Valider,{'attr':{'class':'btn btn-outline-success'}}) }}
+                            </div>
+
+                            {{ form_end(form) }}<!-- End General Form Elements -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+        </div>
+    </section>
+{% endblock %}

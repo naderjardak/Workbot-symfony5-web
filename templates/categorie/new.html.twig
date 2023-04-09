@@ -1,0 +1,25 @@
+{% extends 'yback.html.twig' %}
+
+{% block title %}Nouvelle catégorie{% endblock %}
+
+{% block body %}
+    <h2>Nouvelle catégorie:</h2>
+
+{# {{ include('categorie/_form.html.twig') }} #}
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+<table>
+    <tr>
+        <td>{{ form_label(form.nomcategorie) }}</td>
+        <td>{{ form_widget(form.nomcategorie) }}</td>
+        <td>{{ form_errors(form.nomcategorie) }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><br>{{ form_widget(form.ajouter) }}</td>
+        <td></td>
+    </tr>
+</table>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_categorie_index') }}">back to list</a>
+{% endblock %}

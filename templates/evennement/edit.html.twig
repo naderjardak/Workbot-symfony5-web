@@ -1,0 +1,21 @@
+
+{% extends 'offre/templateoffre.html.twig' %}
+    {% block container %}
+        <br>
+        Editer vos évènements
+
+    {% endblock %}
+    {% block postjob %}
+
+    {% endblock %}
+    {% block jobinformation %}
+    {% endblock %}
+    {% block tableau %}
+
+
+    {{ include('evennement/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_evennement_index') }}"><input type="submit" value="Back" class="btn btn-outline-success"></a>
+
+
+{% endblock %}

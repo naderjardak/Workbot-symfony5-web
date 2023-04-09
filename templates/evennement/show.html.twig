@@ -1,0 +1,61 @@
+{% extends 'utilisateur/client/base.html.twig' %}
+
+{% block body %}
+
+
+    <table class="table">
+        <tbody>
+        <br>
+        <br>
+        <br>
+        <br>
+        <tr>
+            <th>Id</th>
+            <td>{{ evennement.id }}</td>
+        </tr>
+        <tr>
+            <th>Datedebut</th>
+            <td>{{ evennement.datedebut }}</td>
+        </tr>
+        <tr>
+            <th>Datefin</th>
+            <td>{{ evennement.datefin }}</td>
+        </tr>
+        <tr>
+            <th>Libelle</th>
+            <td>{{ evennement.libelle }}</td>
+        </tr>
+        <tr>
+            <th>Heuredebut</th>
+            <td>{{ evennement.heuredebut }}</td>
+        </tr>
+        <tr>
+            <th>Heurefin</th>
+            <td>{{ evennement.heurefin }}</td>
+        </tr>
+        <tr>
+            <th>Nbplaces</th>
+            <td>{{ evennement.nbplaces }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ evennement.prix }}</td>
+        </tr>
+        <tr>
+            <th>Flyer</th>
+            <td>{{ evennement.flyer }}</td>
+        </tr>
+        <tr>
+            <th>Video</th>
+            <td>{{ evennement.video }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_evennement_index') }}"><input type="submit" value="Back" class="btn btn-primary"></a>
+
+    <a href="{{ path('app_evennement_edit', {'id': evennement.id}) }}"><input type="submit" value="Edit"
+                                                                              class="btn btn-primary"></a>
+
+    <a{{ include('evennement/_delete_form.html.twig') }}</a>
+{% endblock %}
